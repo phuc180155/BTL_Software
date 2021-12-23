@@ -14,7 +14,7 @@ public class UserAccessor extends DataAccessor<User>{
         User user = null;
         try{
             ResultSet rs = query(q);
-            if(!rs.next()) {
+            if(!rs.next()){
                 return null;
             }
             user = new User(id, rs.getString("userName"));
@@ -44,7 +44,7 @@ public class UserAccessor extends DataAccessor<User>{
     @Override
     public void update(User user) {
         String q = "UPDATE user SET " +
-                " name = " + "\"" +  user.getUserName() + "\"" +
+                " userName = " + "\"" +  user.getUserName() + "\"" +
                 " WHERE userId = " + user.getUserId();
         System.out.println(q);
         try{
@@ -57,7 +57,7 @@ public class UserAccessor extends DataAccessor<User>{
 
     @Override
     public void save(User user) {
-        String q = "insert into user(name)\n" +
+        String q = "insert into user(userName)\n" +
                 "values (" +
                 "\""+ user.getUserName() + "\"" +
                 ")";
@@ -71,8 +71,8 @@ public class UserAccessor extends DataAccessor<User>{
     }
 
     @Override
-    public void delete(User user) {
-        String q = "DELETE FROM user WHERE userId = " + user.getUserId();
+    public void delete(int userId) {
+        String q = "DELETE FROM user WHERE userId = " + userId;
         System.out.println(q);
         try{
             execute(q);
@@ -81,9 +81,4 @@ public class UserAccessor extends DataAccessor<User>{
             e.printStackTrace();
         }
     }
-
-
-//    public List<Bike> getAllRentedBikes(int id){
-//
-//    }
 }

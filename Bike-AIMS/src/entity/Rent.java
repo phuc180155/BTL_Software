@@ -67,29 +67,8 @@ public class Rent {
         return endTime;
     }
 
-    //    public Rent(int bikeId, String bikeName, int dockId, float pin, boolean status,
-//                Category category, int userId, int debit, Timestamp start_time) {
-//        super(bikeId, bikeName, dockId, pin, status, category);
-//        this.userId = userId;
-//        this.debit = debit;
-//        this.start_time = start_time;
-//        this.end_time = null;
-//        this.rentId = -1;
-//    }
-
-//    public Rent(int bikeId, String bikeName, int dockId, float pin,
-//                boolean status, Category category, int userId, int debit, Timestamp start_time,
-//                Timestamp end_time, int rentId ) {
-//        super(bikeId, bikeName, dockId, pin, status, category);
-//        this.userId = userId;
-//        this.debit = debit;
-//        this.start_time = start_time;
-//        this.end_time = end_time;
-//        this.rentId = rentId;
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "Xe số: " + this.bikeId + " thuê ở bãi xe số " + this.dockId;
-//    }
+    @Override
+    public String toString() {
+        return "Xe số " + this.rentedBike.getBikeId() + " thuê ở bãi xe số " + this.rentedBike.getDockId() + " vào lúc " + this.startTime.toString();
+    }
 }

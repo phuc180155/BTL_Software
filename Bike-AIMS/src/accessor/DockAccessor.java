@@ -45,7 +45,7 @@ public class DockAccessor extends DataAccessor<Dock>{
         return this.get(q);
     }
 
-    public List<Dock> searchDockByInformation(int searchOption, String info){
+    public List<Dock> searchDock(int searchOption, String info){
         String type;
         if (searchOption == 0) {
             type = "dockName";
@@ -102,8 +102,8 @@ public class DockAccessor extends DataAccessor<Dock>{
     }
 
     @Override
-    public void delete(Dock dock) {
-        String q = "DELETE FROM dock WHERE dockId = " + dock.getDockId();
+    public void delete(int dockId) {
+        String q = "DELETE FROM dock WHERE dockId = " + dockId;
         System.out.println(q);
         try{
             execute(q);

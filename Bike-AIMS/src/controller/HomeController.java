@@ -29,8 +29,9 @@ public class HomeController extends BaseController{
     public List<Dock> getAllDock() throws SQLException{
         return this.dockAccessor.getAll();
     }
-    public List<Dock> searchDockByInformation(int searchOption, String info){
-        return this.dockAccessor.searchDockByInformation(searchOption, info);
+    public List<Dock> searchDock(int searchOption, String info){
+        return this.dockAccessor.searchDock(searchOption, info);
     }
+
 
 }

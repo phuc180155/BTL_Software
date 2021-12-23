@@ -45,12 +45,12 @@ public class Configs {
 	public static final String RESULT_SCREEN_PATH = "/views/fxml/result.fxml";
 	// Fix here
 	public static final String SPLASH_SCREEN_PATH = "/views/fxml/SplashScreen.fxml";
-	public static final String CART_SCREEN_PATH = "/views/fxml/cart.fxml";
-	public static final String SHIPPING_SCREEN_PATH = "/views/fxml/shipping.fxml";
-	public static final String CART_MEDIA_PATH = "/views/fxml/media_cart.fxml";
+	public static final String DOCK_DETAIL_SCREEN_PATH = "/views/fxml/DockDetail.fxml";
+	public static final String BIKE_DETAIL_SCREEN_PATH = "/views/fxml/BikeDetail.fxml";
+	public static final String RENTED_BIKE_LIST_SCREEN_PATH = "/views/fxml/RentedBikeListScreen.fxml";
 	public static final String HOME_PATH  = "/views/fxml/HomeScreen.fxml";
-	public static final String HOME_MEDIA_PATH = "/views/fxml/media_home.fxml";
-	public static final String POPUP_PATH = "/views/fxml/popup.fxml";
+	public static final String CREDIT_CARD_FORM_PATH = "/views/fxml/CreditCardForm.fxml";
+	public static final String POPUP_PATH = "/views/fxml/Popup.fxml";
 
 	public static Font REGULAR_FONT = Font.font("Segoe UI", FontWeight.NORMAL, FontPosture.REGULAR, 24);
 

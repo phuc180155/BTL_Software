@@ -1,17 +1,26 @@
 package views.screen;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.Hashtable;
+import java.util.*;
 
 import controller.BaseController;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import utils.Configs;
 import views.screen.home.HomeScreenHandler;
 
 public class BaseScreenHandler {
+
+	@FXML
+	private ImageView footImage11, footImage12, footImage13, footImage21, footImage22, logo;
 
 	private Scene scene;
 	private BaseScreenHandler prev;
@@ -73,4 +82,43 @@ public class BaseScreenHandler {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
 
+	public void setImage(boolean click){
+		// Config:
+		List<ImageView> imgViews = List.of(footImage11, footImage12, footImage13, footImage21, footImage22, logo);
+		Map<ImageView, String> map = new HashMap<ImageView, String>();
+		int i = 0;
+		for (i = 0; i<imgViews.size()-1; i++)
+			map.put(imgViews.get(i), "foot"+i+".jpg");
+		map.put(imgViews.get(i), "logo.jpg");
+		
+		if (click){
+			logo.setOnMouseClicked(e -> {
+				this.homeScreenHandler.show();
+			});
+		}
+
+		// fix image path caused by fxml
+		for (Map.Entry<ImageView, String> entry : map.entrySet()) {
+			this.setSingleImage(entry.getKey(), Configs.IMAGE_PATH + "/" + entry.getValue());
+		}
+	}
+
+	public void setSingleImage(ImageView imgView, String imgPath){
+		File f = new File(imgPath);
+		Image img = new Image(f.toURI().toString());
+		imgView.setImage(img);
+		imgView.setBlendMode(BlendMode.MULTIPLY);
+	}
+
+	public String convertCurrencyFormat(float p){
+		String price = ""+ Math.round(p);
+		if (price.length() <= 3)
+			return price;
+		StringBuilder newFormat = new StringBuilder();
+		for (int i = 0; i<price.length()%3; i++)
+			newFormat.append(price.charAt(i));
+		for (int i = price.length()%3; i<price.length(); i+=3)
+			newFormat.append(new char[]{'.', price.charAt(i), price.charAt(i + 1), price.charAt(i + 2)});
+		return (newFormat.toString().charAt(0) == '.') ? newFormat.toString().substring(1) : newFormat.toString();
+	}
 }

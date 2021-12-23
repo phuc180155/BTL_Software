@@ -34,8 +34,8 @@ public interface DataAccessorInterface<T> {
 
     /**
      * Select table of database corresponding to T in database, delete row which has id = t.id
-     * @param t
+     * @param id
      */
-    public void delete(T t);
+    public void delete(int id);
 
 }

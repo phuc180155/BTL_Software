@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 import accessor.DockAccessor;
 import common.exception.ViewCartException;
 import controller.BaseController;
+import controller.BikeController;
+import controller.DockController;
 import controller.HomeController;
 
 import entity.Dock;
@@ -35,12 +37,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import utils.Configs;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
+import views.screen.BikeDetailScreenHandler;
+import views.screen.DockDetailScreenHandler;
+import views.screen.RentedBikeListScreenHandler;
 
 import javax.print.Doc;
 
 public class HomeScreenHandler extends BaseScreenHandler implements Initializable{
 
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
+    public static final int userId = 1;
 
     @FXML
     private TableColumn<Dock, String> address;
@@ -88,10 +94,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     private TextField searchDockTextField;
 
     @FXML
-    private ImageView footImage11, footImage12, footImage13;
-
-    @FXML
-    private ImageView footImage21, footImage22;
+    private ImageView footImage11, footImage12, footImage13, footImage21, footImage22;
 
     @FXML
     private ImageView rentedBikeIcon;
@@ -106,11 +109,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException{
         super(stage, screenPath);
         setBController(new HomeController());
+        setHomeScreenHandler(this);
     }
-
-//    public Label getNumMediaCartLabel(){
-//        return this.numMediaInCart;
-//    }
 
     @Override
     public void show(){
@@ -121,11 +121,16 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
+            this.setImage(true);
+
             setBController(new HomeController());
             HomeController homeController = (HomeController) this.bController;
             List<Dock> docks = homeController.getAllDock();
             // Thêm vào list của FXCollections
-            this.initDataForDockTable(docks);
+            this.loadDataToDockTable(docks);
+
+            // Set Image:
+            this.setSingleImage(rentedBikeIcon, Configs.IMAGE_PATH + "/rentedBikeCart.png");
 
             // Search Dock
             ObservableList<MenuItem> menuItems = searchDockBtn.getItems();
@@ -134,7 +139,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
                 int finalI = i;
                 if (i == menuItems.size() - 1) {
                     menuItem.setOnAction((e) -> {
-                        this.initDataForDockTable(docks);
+                        this.loadDataToDockTable(docks);
                     });
                 } else {
                     menuItem.setOnAction((e) -> {
@@ -146,9 +151,13 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
                 System.out.println(searchOption);
                 if (searchOption != -1) {
                     String info = searchDockTextField.getText();
-                    List<Dock> dockLst = homeController.searchDockByInformation(searchOption, info);
-                    this.initDataForDockTable(dockLst);
+                    List<Dock> dockLst = homeController.searchDock(searchOption, info);
+                    this.loadDataToDockTable(dockLst);
                 }
+            });
+
+            logo.setOnMouseClicked(e -> {
+                this.homeScreenHandler.show();
             });
 
         } catch (SQLException e) {
@@ -159,14 +168,26 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     public void goDockDetailScreen(MouseEvent e) throws IOException {
         /**
-         * Handle event when user click on station, go to the station detail screen of choosen station
+         * Handle event when user click on dock, go to the dock detail screen of choosen dock
          */
         Dock dock = dockInfoTable.getSelectionModel().getSelectedItem();
         int id = dock.getDockId();
-        System.out.println(id);
+        DockDetailScreenHandler dockDetailScreen;
+        try {
+            LOGGER.info("User clicked to view a dock");
+            dockDetailScreen = new DockDetailScreenHandler(this.stage, Configs.DOCK_DETAIL_SCREEN_PATH, id);
+            dockDetailScreen.setHomeScreenHandler(this);
+            dockDetailScreen.setBController(new DockController());
+            dockDetailScreen.setPreviousScreen(this);
+            dockDetailScreen.initiate();
+            dockDetailScreen.show();
+        } catch (IOException e1){
+            LOGGER.info("Errors occured: " + e1.getMessage());
+            e1.printStackTrace();
+        }
     }
 
-    public void initDataForDockTable(List<Dock> docks) {
+    public void loadDataToDockTable(List<Dock> docks) {
         ObservableList<Dock> dockList = FXCollections.observableArrayList();
         dockList.addAll(docks);
         // Thêm thông tin dock vào bảng:
@@ -181,36 +202,20 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         dockInfoTable.setItems(dockList);
     }
 
-
-//        cartImage.setOnMouseClicked(e -> {
-//            CartScreenHandler cartScreen;
-//            try {
-//                LOGGER.info("User clicked to view cart");
-//                cartScreen = new CartScreenHandler(this.stage, Configs.CART_SCREEN_PATH);
-//                cartScreen.setHomeScreenHandler(this);
-//                cartScreen.setBController(new ViewCartController());
-//                cartScreen.requestToViewCart(this);
-//            } catch (IOException | SQLException e1) {
-//                throw new ViewCartException(Arrays.toString(e1.getStackTrace()).replaceAll(", ", "\n"));
-//            }
-//        });
-
-    public void setImage(){
-        // Config:
-        Map<ImageView, String> map = new HashMap<ImageView, String>();
-        map.put(footImage11, "foot1.jpg");
-        map.put(footImage12, "foot1.jpg");
-        map.put(footImage13, "foot1.jpg");
-        map.put(footImage21, "foot2.jpg");
-        map.put(footImage22, "foot2.jpg");
-        map.put(logo, "logo.jpg");
-        map.put(rentedBikeIcon, "rentedBikeCart.png");
-
-        // fix image path caused by fxml
-        for (Map.Entry<ImageView, String> entry : map.entrySet()) {
-            File f = new File(Configs.IMAGE_PATH + "/" + entry.getValue());
-            Image img = new Image(f.toURI().toString());
-            entry.getKey().setImage(img);
+    @FXML
+    void goRentedBikeListScreen(ActionEvent event) {
+        RentedBikeListScreenHandler rentedBikeListScreenHandler;
+        try {
+            LOGGER.info("User clicked to view a dock");
+            rentedBikeListScreenHandler = new RentedBikeListScreenHandler(this.stage, Configs.RENTED_BIKE_LIST_SCREEN_PATH, userId);
+            rentedBikeListScreenHandler.setHomeScreenHandler(this.homeScreenHandler);
+            rentedBikeListScreenHandler.setPreviousScreen(this);
+            rentedBikeListScreenHandler.initiate();
+            rentedBikeListScreenHandler.show();
+        } catch (IOException e1){
+            LOGGER.info("Errors occured: " + e1.getMessage());
+            e1.printStackTrace();
         }
+
     }
 }

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +18,7 @@
    <children>
       <AnchorPane layoutX="22.0" layoutY="3.0" prefHeight="195.0" prefWidth="1415.0" style="-fx-background-color: #8dc284; -fx-background-image: url('file:/D:/OOP/Workspace/Bike-AIMS/assets/images/capstone_background.jpg');" AnchorPane.bottomAnchor="650.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="logo" blendMode="MULTIPLY" fitHeight="100.0" fitWidth="151.0" layoutX="38.0" layoutY="1.0" preserveRatio="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="1012.0" AnchorPane.topAnchor="1.0">
+            <ImageView fx:id="logo" blendMode="MULTIPLY" fitHeight="100.0" fitWidth="151.0" layoutX="38.0" layoutY="1.0" preserveRatio="true" style="-fx-cursor: hand;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="1012.0" AnchorPane.topAnchor="1.0">
                <image>
                   <Image url="@../../../assets/images/logo.jpg" />
                </image>
@@ -31,7 +35,7 @@
          <children>
             <ImageView fx:id="footImage11" blendMode="MULTIPLY" fitHeight="63.0" fitWidth="246.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="898.0" AnchorPane.topAnchor="-1.0">
                <image>
-                  <Image url="@../../../assets/images/foot1.jpg" />
+                  <Image url="@../../../assets/images/foot0.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="footImage12" blendMode="MULTIPLY" fitHeight="63.0" fitWidth="246.0" layoutX="330.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="303.0" AnchorPane.rightAnchor="600.0">
@@ -41,17 +45,17 @@
             </ImageView>
             <ImageView fx:id="footImage13" blendMode="MULTIPLY" fitHeight="63.0" fitWidth="246.0" layoutX="607.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="303.0">
                <image>
-                  <Image url="@../../../assets/images/foot1.jpg" />
+                  <Image url="@../../../assets/images/foot2.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="footImage21" blendMode="MULTIPLY" fitHeight="63.0" fitWidth="253.0" layoutX="242.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../assets/images/foot2.jpg" />
+                  <Image url="@../../../assets/images/foot3.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="footImage22" blendMode="MULTIPLY" fitHeight="63.0" fitWidth="253.0" layoutX="541.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../assets/images/foot2.jpg" />
+                  <Image url="@../../../assets/images/foot4.jpg" />
                </image>
             </ImageView>
             <Label layoutX="865.0" layoutY="10.0" style="-fx-text-fill: #333333; -fx-font-weight: bold; -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );" text="Nhóm 8 - KSTN K63" textFill="#333333">
@@ -61,39 +65,36 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="24.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <AnchorPane layoutX="24.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: grey; -fx-cursor: hand;" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Label layoutX="101.0" layoutY="177.0" text="DANH SÁCH XE" textFill="#e319e2">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <VBox layoutX="795.0" layoutY="14.0" prefHeight="194.0" prefWidth="330.0">
-               <children>
-                  <ImageView fx:id="dockImage" fitHeight="173.0" fitWidth="332.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="dockNameLabel" alignment="CENTER" prefHeight="46.0" prefWidth="356.0" text="Label" textFill="#b100ff">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <TableView fx:id="bikeListTable" layoutX="94.0" layoutY="244.0" prefHeight="309.0" prefWidth="990.0">
+            <VBox layoutX="795.0" layoutY="14.0" prefHeight="194.0" prefWidth="330.0" />
+            <TableView fx:id="bikeListTable" layoutX="49.0" layoutY="244.0" onMouseClicked="#goBikeDetailScreen" prefHeight="310.0" prefWidth="1035.0">
               <columns>
-                <TableColumn fx:id="index" prefWidth="38.933319091796875" text="#" />
-                <TableColumn fx:id="bikeId" prefWidth="91.19999694824219" text="BikeID" />
-                  <TableColumn fx:id="barcode" prefWidth="74.39996337890625" text="Barcode" />
-                  <TableColumn fx:id="bikeName" prefWidth="202.66668701171875" text="BikeName" />
-                  <TableColumn fx:id="currentPIN" prefWidth="85.60003662109375" text="Current PIN" />
-                  <TableColumn fx:id="status" prefWidth="113.60000610351562" text="Status" />
-                  <TableColumn fx:id="category" prefWidth="167.2000732421875" text="Category" />
-                  <TableColumn fx:id="licensePlate" prefWidth="105.86663818359375" text="License Plate" />
-                  <TableColumn fx:id="costPerQuarterHour" prefWidth="116.0" text="Cost per 15 min" />
+                <TableColumn fx:id="index" prefWidth="54.13334274291992" style="-fx-alignment: CENTER;" text="#" />
+                <TableColumn fx:id="bikeId" prefWidth="108.80001831054688" style="-fx-alignment: CENTER;" text="BikeID" />
+                  <TableColumn fx:id="barcode" prefWidth="118.93328857421875" style="-fx-alignment: CENTER;" text="Barcode" />
+                  <TableColumn fx:id="bikeName" prefWidth="279.4667053222656" text="BikeName" />
+                  <TableColumn fx:id="status" prefWidth="146.13336181640625" style="-fx-alignment: CENTER;" text="Status" />
+                  <TableColumn fx:id="category" prefWidth="326.6666259765625" text="Category" />
               </columns>
             </TableView>
+            <ImageView fx:id="dockImage" fitHeight="203.0" fitWidth="364.0" layoutX="719.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+            <SplitMenuButton fx:id="searchBikeBtn" layoutX="469.0" layoutY="151.0" mnemonicParsing="false" onAction="#searchBike" prefHeight="47.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(white, grey);" text="Search" textFill="#cc13a7">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Barcode" />
+                <MenuItem mnemonicParsing="false" text="BikeName" />
+                  <MenuItem mnemonicParsing="false" text="Status" />
+                  <MenuItem mnemonicParsing="false" text="Category" />
+                  <MenuItem mnemonicParsing="false" text="Reset" />
+              </items>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </SplitMenuButton>
+            <TextField fx:id="searchBikeTextField" layoutX="51.0" layoutY="152.0" prefHeight="49.0" prefWidth="403.0" style="-fx-background-radius: 10;" />
          </children>
       </AnchorPane>
-      <Button fx:id="backBtn" blendMode="MULTIPLY" layoutX="1008.0" layoutY="27.0" mnemonicParsing="false" onAction="#goBackPreviousScreen" prefHeight="47.0" prefWidth="129.0" style="-fx-background-radius: 10;" textFill="#7e1f1f">
+      <Button fx:id="backBtn" blendMode="MULTIPLY" layoutX="1008.0" layoutY="27.0" mnemonicParsing="false" onAction="#goBackPreviousScreen" prefHeight="47.0" prefWidth="129.0" style="-fx-cursor:hand; -fx-background-radius: 10;" textFill="#7e1f1f">
          <font>
             <Font size="21.0" />
          </font>
@@ -103,10 +104,13 @@
             <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/capstone_backarrow.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="1068.0" layoutY="32.0" prefHeight="35.0" prefWidth="65.0" text="Back" textFill="#a90606">
+      <Label disable="true" layoutX="1068.0" layoutY="32.0" prefHeight="35.0" prefWidth="65.0" text="Back" textFill="#590909">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </children>
+   <stylesheets>
+      <URL value="@../../../assets/css/general.css" />
+   </stylesheets>
 </AnchorPane>

@@ -13,8 +13,9 @@ public class Bike {
 
     protected int dockId;
     protected Category category;
+    protected String imagePath;
 
-    public Bike(int bikeId, String bikeName, String licensePlate, float pin, boolean status, float initCost, float costPerQuarterHour, int dockId, Category category) {
+    public Bike(int bikeId, String bikeName, String licensePlate, float pin, boolean status, float initCost, float costPerQuarterHour, int dockId, Category category, String imagePath) {
         this.bikeId = bikeId;
         this.bikeName = bikeName;
         this.licensePlate = licensePlate;
@@ -24,17 +25,8 @@ public class Bike {
         this.costPerQuarterHour = costPerQuarterHour;
         this.dockId = dockId;
         this.category = category;
+        this.imagePath = imagePath;
     }
-
-//    public Bike(int bikeId, String bikeName, int dockId, float pin, boolean status, Category category) {
-//        this.bikeId = bikeId;
-//        this.bikeName = bikeName;
-//        this.dockId = dockId;
-//        this.pin = pin;
-//        this.status = status;
-//        this.category = category;
-//    }
-
 
     public int getBikeId() {
         return bikeId;
@@ -106,6 +98,14 @@ public class Bike {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 
 //    @Override
