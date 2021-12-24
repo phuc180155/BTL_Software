@@ -1,10 +1,8 @@
 package accessor;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import entity.Bike;
 import entity.Dock;
 
 public class DockAccessor extends DataAccessor<Dock>{
@@ -63,11 +61,11 @@ public class DockAccessor extends DataAccessor<Dock>{
         String q = "UPDATE dock SET " +
                 " dockName = " + "\"" +  dock.getDockName() + "\"" +
                 " , address = " + "\"" +  dock.getAddress() + "\"" +
-                " , dockArea = " + "\"" +  dock.getDockArea() + "\"" +
-                " , availableBikes = " + "\"" +  dock.getAvailableBikes() + "\"" +
-                " , emptyDockingPoints = " + "\"" +  dock.getEmptyDockingPoints() + "\"" +
-                " , distance = " + "\"" +  dock.getDistance() + "\"" +
-                " , walkingTime = " + "\"" +  dock.getWalkingTime() + "\"" +
+                " , dockArea = " + dock.getDockArea() +
+                " , availableBikes = " +  dock.getAvailableBikes() +
+                " , emptyDockingPoints = " + dock.getEmptyDockingPoints() +
+                " , distance = " + dock.getDistance() +
+                " , walkingTime = " + dock.getWalkingTime() +
                 " , imagePath = " + "\"" +  dock.getImagePath() + "\"" +
                 " WHERE dockId = " + dock.getDockId();
         System.out.println(q);
@@ -85,11 +83,11 @@ public class DockAccessor extends DataAccessor<Dock>{
                 "values (" +
                 "\"" + dock.getDockName() + "\", " +
                 "\"" + dock.getAddress() + "\", " +
-                "\"" + dock.getDockArea() + "\"" +
-                "\"" + dock.getAvailableBikes() + "\"" +
-                "\"" + dock.getEmptyDockingPoints() + "\"" +
-                "\"" + dock.getDistance() + "\"" +
-                "\"" + dock.getWalkingTime() + "\"" +
+                dock.getDockArea() + ", " +
+                dock.getAvailableBikes() + ", " +
+                dock.getEmptyDockingPoints() + ", " +
+                dock.getDistance() + ", " +
+                dock.getWalkingTime() + ", " +
                 "\"" + dock.getImagePath() + "\"" +
                 ")";
         System.out.println(q);

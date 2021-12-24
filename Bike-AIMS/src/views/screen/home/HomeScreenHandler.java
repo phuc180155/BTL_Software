@@ -1,6 +1,5 @@
 package views.screen.home;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -8,26 +7,20 @@ import java.util.*;
 import java.util.logging.Logger;
 
 import accessor.DockAccessor;
-import common.exception.ViewCartException;
-import controller.BaseController;
-import controller.BikeController;
+import controller.BarcodeController;
 import controller.DockController;
 import controller.HomeController;
 
+import controller.RentBikeController;
+import entity.Bike;
 import entity.Dock;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import javafx.collections.FXCollections;
@@ -36,14 +29,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import utils.Configs;
 import utils.Utils;
-import views.screen.BaseScreenHandler;
-import views.screen.BikeDetailScreenHandler;
-import views.screen.DockDetailScreenHandler;
-import views.screen.RentedBikeListScreenHandler;
+import views.screen.*;
 
-import javax.print.Doc;
-
-public class HomeScreenHandler extends BaseScreenHandler implements Initializable{
+public class HomeScreenHandler extends BaseScreenHandler{
 
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
     public static final int userId = 1;
@@ -118,8 +106,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         super.show();
     }
 
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize() {
         try {
             this.setImage(true);
 
@@ -142,11 +129,13 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
                         this.loadDataToDockTable(docks);
                     });
                 } else {
+                    int finalI1 = i;
                     menuItem.setOnAction((e) -> {
                         searchOption = finalI;
                     });
                 }
             }
+
             searchDockBtn.setOnAction((e)->{
                 System.out.println(searchOption);
                 if (searchOption != -1) {
@@ -178,6 +167,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
             dockDetailScreen = new DockDetailScreenHandler(this.stage, Configs.DOCK_DETAIL_SCREEN_PATH, id);
             dockDetailScreen.setHomeScreenHandler(this);
             dockDetailScreen.setBController(new DockController());
+            dockDetailScreen.setScreenTitle("Dock Detail Screen");
             dockDetailScreen.setPreviousScreen(this);
             dockDetailScreen.initiate();
             dockDetailScreen.show();
@@ -210,12 +200,41 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
             rentedBikeListScreenHandler = new RentedBikeListScreenHandler(this.stage, Configs.RENTED_BIKE_LIST_SCREEN_PATH, userId);
             rentedBikeListScreenHandler.setHomeScreenHandler(this.homeScreenHandler);
             rentedBikeListScreenHandler.setPreviousScreen(this);
+            rentedBikeListScreenHandler.setScreenTitle("Rented Bike List");
             rentedBikeListScreenHandler.initiate();
             rentedBikeListScreenHandler.show();
         } catch (IOException e1){
             LOGGER.info("Errors occured: " + e1.getMessage());
             e1.printStackTrace();
         }
+    }
 
+
+    @FXML
+    void goRentBikeScreenHandler(ActionEvent event) throws IOException {
+        // Get and barcode:
+        String barcode = barcodeTextField.getText();
+        BarcodeController barcodeController = new BarcodeController();
+        boolean checkBarcode = barcodeController.validateBarcode(barcode);
+        if (!checkBarcode){
+            PopupScreen.error("Barcode not valid!");
+        } else {
+            RentBikeScreenHandler rentBikeScreenHandler;
+            RentBikeController rentBikeController = new RentBikeController();
+            Bike bike = rentBikeController.requestBike(barcode);
+            try {
+                LOGGER.info("User clicked barcode");
+                rentBikeScreenHandler = new RentBikeScreenHandler(this.stage, Configs.CREDIT_CARD_FORM_PATH, userId, bike);
+                rentBikeScreenHandler.setHomeScreenHandler(this.homeScreenHandler);
+                rentBikeScreenHandler.setScreenTitle("Rent Bike Screen");
+                rentBikeScreenHandler.setPreviousScreen(this);
+                rentBikeScreenHandler.setBController(new RentBikeController());
+                rentBikeScreenHandler.initiate();
+                rentBikeScreenHandler.show();
+            } catch (IOException e1) {
+                LOGGER.info("Errors occured: " + e1.getMessage());
+                e1.printStackTrace();
+            }
+        }
     }
 }

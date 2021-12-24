@@ -26,7 +26,7 @@
             </Button>
             <ImageView fx:id="backIcon" blendMode="MULTIPLY" fitHeight="35.0" fitWidth="37.0" layoutX="1026.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/capstone_backarrow.jpg" />
+                  <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/backarrow.jpg" />
                </image>
             </ImageView>
             <Label disable="true" layoutX="1071.0" layoutY="31.0" prefHeight="35.0" prefWidth="65.0" text="Back" textFill="#590909">
@@ -34,14 +34,14 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="titleLabel" layoutX="199.0" layoutY="30.0" style="-fx-text-fill: red; -fx-font-weight: bold; -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );" text="Title" textFill="#1b00ff">
+            <Label fx:id="titleLabel" layoutX="152.0" layoutY="28.0" text="PAYMENT" textFill="#009bff">
                <font>
-                  <Font size="28.0" />
+                  <Font name="System Bold" size="29.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="11.0" layoutY="585.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('file:/D:/OOP/Workspace/Bike-AIMS/assets/images/splash_background.jpg');" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="685.0">
+      <AnchorPane layoutX="11.0" layoutY="585.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('file:/D:/OOP/Workspace/Bike-AIMS/assets/images/foot_background.jpg');" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="685.0">
          <children>
             <ImageView fx:id="footImage11" blendMode="MULTIPLY" fitHeight="63.0" fitWidth="246.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="898.0" AnchorPane.topAnchor="-1.0">
                <image>

@@ -1,11 +1,10 @@
 package views.screen;
 
-import entity.*;
+import entity.Bike;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -16,8 +15,6 @@ import utils.Configs;
 ;
 import javafx.scene.paint.Color;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class BikeDetailScreenHandler extends BaseScreenHandler {
@@ -57,7 +54,7 @@ public class BikeDetailScreenHandler extends BaseScreenHandler {
         // Set image:
         this.setImage(true);
         // BackIcon:
-        this.setSingleImage(backIcon,Configs.IMAGE_PATH + "/" +"capstone_backarrow.jpg");
+        this.setSingleImage(backIcon,Configs.IMAGE_PATH + "/" +"backarrow.jpg");
         // Set title
         this.setScreenTitle("Bike Detail");
         System.out.println((BikeDetailScreenHandler) this.loader.getController());
@@ -75,7 +72,7 @@ public class BikeDetailScreenHandler extends BaseScreenHandler {
     }
 
     public void loadData(){
-        this.setSingleImage(bikeImage, this.bike.getImagePath());
+        this.setSingleFitImage(bikeImage, this.bike.getImagePath(), 340, 230);
         titleLabel.setText(this.bike.getBikeName());
         bikeNameLabel.setText(this.bike.getBikeName());
         String status;

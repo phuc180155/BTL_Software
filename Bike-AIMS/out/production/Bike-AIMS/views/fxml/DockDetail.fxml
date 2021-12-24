@@ -24,14 +24,14 @@
                </image>
             </ImageView>
             <AnchorPane layoutX="968.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="631.0" AnchorPane.leftAnchor="968.0" AnchorPane.rightAnchor="-18.0" AnchorPane.topAnchor="25.0" />
-            <Label fx:id="titleLabel" layoutX="158.0" layoutY="31.0" style="-fx-text-fill: red; -fx-font-weight: bold; -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );" text="Title" textFill="#1b00ff">
+            <Label fx:id="titleLabel" layoutX="158.0" layoutY="28.0" text="PAYMENT" textFill="#009bff">
                <font>
-                  <Font size="28.0" />
+                  <Font name="System Bold" size="29.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="11.0" layoutY="585.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('file:/D:/OOP/Workspace/Bike-AIMS/assets/images/splash_background.jpg');" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="685.0">
+      <AnchorPane layoutX="11.0" layoutY="585.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('file:/D:/OOP/Workspace/Bike-AIMS/assets/images/foot_background.jpg');" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="685.0">
          <children>
             <ImageView fx:id="footImage11" blendMode="MULTIPLY" fitHeight="63.0" fitWidth="246.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="898.0" AnchorPane.topAnchor="-1.0">
                <image>
@@ -78,7 +78,7 @@
                   <TableColumn fx:id="category" prefWidth="326.6666259765625" text="Category" />
               </columns>
             </TableView>
-            <ImageView fx:id="dockImage" fitHeight="203.0" fitWidth="364.0" layoutX="719.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="dockImage" fitHeight="219.0" fitWidth="391.0" layoutX="692.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
             <SplitMenuButton fx:id="searchBikeBtn" layoutX="469.0" layoutY="151.0" mnemonicParsing="false" onAction="#searchBike" prefHeight="47.0" prefWidth="143.0" style="-fx-background-color: linear-gradient(white, grey);" text="Search" textFill="#cc13a7">
               <items>
                 <MenuItem mnemonicParsing="false" text="Barcode" />
@@ -101,7 +101,7 @@
       </Button>
       <ImageView fx:id="backIcon" blendMode="MULTIPLY" fitHeight="35.0" fitWidth="37.0" layoutX="1023.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/capstone_backarrow.jpg" />
+            <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/backarrow.jpg" />
          </image>
       </ImageView>
       <Label disable="true" layoutX="1068.0" layoutY="32.0" prefHeight="35.0" prefWidth="65.0" text="Back" textFill="#590909">
@@ -110,7 +110,4 @@
          </font>
       </Label>
    </children>
-   <stylesheets>
-      <URL value="@../../../assets/css/general.css" />
-   </stylesheets>
 </AnchorPane>

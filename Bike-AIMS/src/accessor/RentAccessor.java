@@ -1,6 +1,7 @@
 package accessor;
 
-import entity.*;
+import entity.Bike;
+import entity.Rent;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,7 +57,7 @@ public class RentAccessor extends DataAccessor<Rent>{
     }
 
     public List<Rent> getRentByUserId(int userId) {
-        String q = "SELECT * FROM rent WHERE userId = " + userId;
+        String q = "SELECT rent.* FROM rent, bike WHERE rent.bikeId = bike.bikeId and bike.status = 1 and rent.userId = " + userId;
         return this.getByQuery(q);
     }
 
@@ -81,7 +82,7 @@ public class RentAccessor extends DataAccessor<Rent>{
         }else{
             String q = "UPDATE rent SET " +
                     " startTime = " + "\"" + rent.getStartTime() + "\"" +
-                    " endTime = " + "\"" + rent.getEndTime() + "\"" +
+                    " , endTime = " + "\"" + rent.getEndTime() + "\"" +
                     " , debit = " + rent.getDebit() +
                     " , userId = " + rent.getUserId() +
                     " , bikeId = " + rent.getRentedBike().getBikeId() +
@@ -105,7 +106,7 @@ public class RentAccessor extends DataAccessor<Rent>{
                     "\"" + rent.getStartTime() + "\" , " +
                     rent.getDebit() + ", " +
                     rent.getUserId() + ", " +
-                    rent.getRentedBike().getBikeId() + ", " +
+                    rent.getRentedBike().getBikeId() +
                     ")";
             System.out.println(q);
             try{
@@ -121,7 +122,7 @@ public class RentAccessor extends DataAccessor<Rent>{
                     "\"" + rent.getEndTime() + "\" , " +
                     rent.getDebit() + ", " +
                     rent.getUserId() + ", " +
-                    rent.getRentedBike().getBikeId() + ", " +
+                    rent.getRentedBike().getBikeId() +
                     ")";
             System.out.println(q);
             try{

@@ -1,9 +1,8 @@
 package accessor;
 
-import entity.*;
+import entity.Category;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

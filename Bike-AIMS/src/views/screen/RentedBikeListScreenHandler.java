@@ -1,6 +1,6 @@
 package views.screen;
 
-import controller.BikeController;
+import controller.ReturnBikeController;
 import controller.UserController;
 import entity.Rent;
 import javafx.collections.FXCollections;
@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Configs;
+import views.screen.home.HomeScreenHandler;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,7 +42,9 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
 
     @FXML
     void goBackPreviousScreen(ActionEvent event) {
-        this.getPreviousScreen().show();
+        HomeScreenHandler homeScreenHandler = (HomeScreenHandler) this.getPreviousScreen();
+        homeScreenHandler.initialize();
+        homeScreenHandler.show();
     }
 
     public RentedBikeListScreenHandler(Stage stage, String screenPath, int userId) throws IOException {
@@ -53,11 +56,11 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
         // Set image:
         this.setImage(true);
         // BackIcon:
-        this.setSingleImage(backIcon,Configs.IMAGE_PATH + "/" +"capstone_backarrow.jpg");
+        this.setSingleImage(backIcon,Configs.IMAGE_PATH + "/" +"backarrow.jpg");
         // Set title
         this.setScreenTitle("Bike Detail");
         // Set title label:
-        titleLabel.setText("List Rented Bikes");
+        titleLabel.setText("List of Rented Bikes");
         System.out.println((RentedBikeListScreenHandler) this.loader.getController());
         this.loadData();
     }
@@ -76,10 +79,11 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
         Rent rent = rentedBikeListView.getSelectionModel().getSelectedItem();
         ReturnBikeScreenHandler returnBikeScreenHandler;
         try {
-            LOGGER.info("User clicked to view return bike");
+            LOGGER.info("User clicked to return bike");
             returnBikeScreenHandler = new ReturnBikeScreenHandler(this.stage, Configs.CREDIT_CARD_FORM_PATH, rent);
             returnBikeScreenHandler.setHomeScreenHandler(this.homeScreenHandler);
-//            returnBikeScreenHandler.setBController(new BikeController());
+            returnBikeScreenHandler.setScreenTitle("Return Bike Screen");
+            returnBikeScreenHandler.setBController(new ReturnBikeController());
             returnBikeScreenHandler.setPreviousScreen(this);
             returnBikeScreenHandler.initiate();
             returnBikeScreenHandler.show();

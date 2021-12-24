@@ -15,6 +15,8 @@ public class Bike {
     protected Category category;
     protected String imagePath;
 
+    private static final int HASH_LENGTH = 10;
+
     public Bike(int bikeId, String bikeName, String licensePlate, float pin, boolean status, float initCost, float costPerQuarterHour, int dockId, Category category, String imagePath) {
         this.bikeId = bikeId;
         this.bikeName = bikeName;
@@ -112,4 +114,17 @@ public class Bike {
 //    public String toString() {
 //        return "Xe đạp số " + this.bikeId + ".Tên xe: " +  this.bikeName + ". Barcode: " + this.bikeId;
 //    }
+
+    public String toHash(){
+        StringBuilder binaryString = new StringBuilder(Integer.toBinaryString(this.bikeId));
+        int length = binaryString.toString().length();
+        if (length< HASH_LENGTH) {
+            for (int i = 0; i < HASH_LENGTH - length; i++)
+                binaryString.insert(0, '0');
+        }
+        StringBuilder inverseBinaryString = new StringBuilder();
+        for (int i = 0; i<binaryString.toString().length(); i++)
+            inverseBinaryString.append(binaryString.toString().charAt(i) == '0' ? '1' : '0');
+        return inverseBinaryString.toString();
+    }
 }

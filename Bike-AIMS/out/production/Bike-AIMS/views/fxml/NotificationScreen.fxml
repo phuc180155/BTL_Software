@@ -69,7 +69,7 @@
       </Button>
       <ImageView blendMode="MULTIPLY" fitHeight="35.0" fitWidth="37.0" layoutX="1026.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/capstone_backarrow.jpg" />
+            <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/backarrow.jpg" />
          </image>
       </ImageView>
       <Label layoutX="1071.0" layoutY="33.0" prefHeight="35.0" prefWidth="65.0" text="Back" textFill="#a90606">

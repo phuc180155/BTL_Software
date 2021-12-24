@@ -51,7 +51,7 @@
             </SplitMenuButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="11.0" layoutY="585.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('file:/D:/OOP/Workspace/Bike-AIMS/assets/images/splash_background.jpg');" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="685.0">
+      <AnchorPane layoutX="11.0" layoutY="585.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('file:/D:/OOP/Workspace/Bike-AIMS/assets/images/foot_background.jpg');" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="685.0">
          <children>
             <ImageView fx:id="footImage11" blendMode="MULTIPLY" fitHeight="63.0" fitWidth="246.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="898.0" AnchorPane.topAnchor="-1.0">
                <image>
@@ -97,8 +97,8 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <TextField fx:id="barcodeTextField" layoutX="223.0" layoutY="63.0" prefHeight="50.0" prefWidth="197.0" />
-            <Button fx:id="rentBikeBtn" contentDisplay="CENTER" layoutX="469.0" layoutY="70.0" mnemonicParsing="false" style="-fx-cursor: hand;-fx-background-color: green; -fx-background-radius: 20;" text="Rent Bike" textFill="WHITE">
+            <TextField fx:id="barcodeTextField" layoutX="223.0" layoutY="63.0" prefHeight="50.0" prefWidth="345.0" />
+            <Button fx:id="rentBikeBtn" contentDisplay="CENTER" layoutX="581.0" layoutY="68.0" mnemonicParsing="false" onAction="#goRentBikeScreenHandler" style="-fx-cursor: hand;-fx-background-color: green; -fx-background-radius: 20;" text="Rent Bike" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -118,7 +118,4 @@
          </children>
       </AnchorPane>
    </children>
-   <stylesheets>
-      <URL value="@../../../assets/css/general.css" />
-   </stylesheets>
 </AnchorPane>

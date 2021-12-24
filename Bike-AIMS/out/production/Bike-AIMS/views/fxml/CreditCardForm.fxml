@@ -15,20 +15,20 @@
    <children>
       <AnchorPane layoutX="22.0" layoutY="3.0" prefHeight="195.0" prefWidth="1415.0" style="-fx-background-color: #8dc284; -fx-background-image: url('file:/D:/TKXDPM/Bài%20tập%20tuần/ScreenBuilder/image/capstone_background.jpg');" AnchorPane.bottomAnchor="650.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="logo" blendMode="MULTIPLY" fitHeight="100.0" fitWidth="151.0" layoutX="38.0" layoutY="1.0" preserveRatio="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="1012.0" AnchorPane.topAnchor="1.0">
+            <ImageView fx:id="logo" blendMode="MULTIPLY" fitHeight="100.0" fitWidth="151.0" layoutX="38.0" layoutY="1.0" preserveRatio="true" style="-fx-cursor: hand;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="1012.0" AnchorPane.topAnchor="1.0">
                <image>
                   <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/capstone_logo.jpg" />
                </image>
             </ImageView>
             <AnchorPane layoutX="968.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="631.0" AnchorPane.leftAnchor="968.0" AnchorPane.rightAnchor="-18.0" AnchorPane.topAnchor="25.0" />
-            <Button fx:id="backBtn" blendMode="MULTIPLY" layoutX="1011.0" layoutY="26.0" mnemonicParsing="false" onAction="#goBackPreviousScreen" prefHeight="47.0" prefWidth="129.0" style="-fx-background-radius: 10;" textFill="#7e1f1f">
+            <Button fx:id="backBtn" blendMode="MULTIPLY" layoutX="1011.0" layoutY="26.0" mnemonicParsing="false" onAction="#goBackPreviousScreen" prefHeight="47.0" prefWidth="129.0" style="-fx-background-radius: 10; -fx-cursor: hand;" textFill="#7e1f1f">
                <font>
                   <Font size="21.0" />
                </font>
             </Button>
             <ImageView fx:id="backIcon" blendMode="MULTIPLY" fitHeight="35.0" fitWidth="37.0" layoutX="1026.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/capstone_backarrow.jpg" />
+                  <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/backarrow.jpg" />
                </image>
             </ImageView>
             <Label disable="true" layoutX="1071.0" layoutY="31.0" prefHeight="35.0" prefWidth="65.0" text="Back" textFill="#590909">
@@ -36,14 +36,14 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="titleLabel" layoutX="147.0" layoutY="11.0" text="PAYMENT" textFill="#009bff">
+            <Label fx:id="titleLabel" layoutX="140.0" layoutY="29.0" text="PAYMENT" textFill="#009bff">
                <font>
-                  <Font name="System Bold" size="50.0" />
+                  <Font name="System Bold" size="29.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="11.0" layoutY="585.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('file:/D:/OOP/Workspace/Bike-AIMS/assets/images/splash_background.jpg');" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="685.0">
+      <AnchorPane layoutX="11.0" layoutY="585.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('file:/D:/OOP/Workspace/Bike-AIMS/assets/images/foot_background.jpg');" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="685.0">
          <children>
             <ImageView fx:id="footImage11" blendMode="MULTIPLY" fitHeight="63.0" fitWidth="246.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="898.0" AnchorPane.topAnchor="-1.0">
                <image>
@@ -79,7 +79,7 @@
       </AnchorPane>
       <AnchorPane layoutX="449.0" layoutY="199.0" prefHeight="586.0" prefWidth="701.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="510.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Button fx:id="confirmRentBikeBtn" layoutX="64.0" layoutY="486.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="270.0" style="-fx-background-color: RED;" text="Confirm Rent Bike" textFill="WHITE" AnchorPane.leftAnchor="32.0">
+            <Button fx:id="confirmBtn" layoutX="64.0" layoutY="486.0" mnemonicParsing="false" onAction="#confirm" prefHeight="41.0" prefWidth="270.0" style="-fx-background-color: RED; -fx-cursor: hand;" text="Confirm Rent Bike" textFill="WHITE" AnchorPane.leftAnchor="32.0">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -126,7 +126,7 @@
                   <TextField fx:id="expirationDate" prefHeight="54.0" />
                </children>
             </VBox>
-            <Button fx:id="validInformationBtn" layoutX="379.0" layoutY="487.0" mnemonicParsing="false" onAction="#resetDefaultValue" prefHeight="41.0" prefWidth="270.0" style="-fx-background-color: RED;" text="Valid Information" textFill="WHITE" AnchorPane.leftAnchor="340.0">
+            <Button fx:id="validInformationBtn" layoutX="379.0" layoutY="487.0" mnemonicParsing="false" onAction="#resetDefaultValue" prefHeight="41.0" prefWidth="270.0" style="-fx-background-color: RED; -fx-cursor: hand;" text="Valid Information" textFill="WHITE" AnchorPane.leftAnchor="340.0">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -135,12 +135,12 @@
       </AnchorPane>
       <AnchorPane layoutX="784.0" layoutY="172.0" prefHeight="579.0" prefWidth="478.0" style="-fx-background-image: url('file:/D:/TKXDPM/Bài%20tập%20tuần/ScreenBuilder/image/capstone_content_part1.jpg'); -fx-border-color: grey;" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="640.0" AnchorPane.topAnchor="100.0">
          <children>
-            <ImageView fx:id="bikeImage" fitHeight="245.0" fitWidth="468.0" layoutX="20.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="bikeImage" fitHeight="259.0" fitWidth="463.0" layoutX="23.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../TKXDPM/Bài tập tuần/2_ScreenBuilder/image/capstone_bikedock2.jpg" />
                </image>
             </ImageView>
-            <ListView fx:id="bikeInfoListView" layoutX="-1.0" layoutY="290.0" prefHeight="294.0" prefWidth="510.0" />
+            <ListView fx:id="bikeInfoListView" layoutX="1.0" layoutY="290.0" prefHeight="294.0" prefWidth="506.0" />
          </children>
       </AnchorPane>
    </children>

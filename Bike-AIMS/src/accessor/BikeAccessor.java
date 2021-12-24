@@ -1,9 +1,9 @@
 package accessor;
 
-import entity.*;
+import entity.Bike;
+import entity.Category;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,8 +105,21 @@ public class BikeAccessor extends DataAccessor<Bike>{
                         " , costPerQuarterHour = " + bike.getCostPerQuarterHour() +
                         " , dockId = " + bike.getDockId()+
                         " , categoryId = " + bike.getCategory().getCategoryId() +
-                        " , imagePath = " + bike.getImagePath() +
+                        " , imagePath = " + "\"" + bike.getImagePath() + "\"" +
                         " WHERE bikeId = " + bike.getBikeId();
+        System.out.println(q);
+        try{
+            executeUpdate(q);
+        } catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }
+    }
+
+    public void updateStatus(int bikeId, int status){
+        String q = "UPDATE bike SET " +
+                " status = " + status +
+                " WHERE bikeId = " + bikeId;
         System.out.println(q);
         try{
             executeUpdate(q);

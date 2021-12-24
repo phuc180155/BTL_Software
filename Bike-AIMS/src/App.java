@@ -90,6 +90,7 @@ public class App extends Application {
 			fadeOut.setOnFinished((e) -> {
 				try {
 					HomeScreenHandler homeHandler = new HomeScreenHandler(primaryStage, Configs.HOME_PATH);
+					homeHandler.initialize();
 					homeHandler.setScreenTitle("Home Screen");
 					homeHandler.show();
 				} catch (IOException e1) {

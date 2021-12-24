@@ -2,7 +2,6 @@ package controller;
 
 import accessor.RentAccessor;
 import entity.Rent;
-import entity.User;
 
 import java.util.List;
 

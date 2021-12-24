@@ -4,8 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import accessor.DockAccessor;
-import entity.*;
-import views.screen.home.HomeScreenHandler;
+import entity.Dock;
 
 /**
  * This class controls the flow of events in homescreen

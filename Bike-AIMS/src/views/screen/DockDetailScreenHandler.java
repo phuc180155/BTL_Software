@@ -1,12 +1,9 @@
 package views.screen;
 
-import com.mysql.jdbc.StringUtils;
 import controller.BikeController;
 import controller.DockController;
-import controller.HomeController;
 import entity.Bike;
 import entity.Dock;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -15,20 +12,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Configs;
-import views.screen.home.HomeScreenHandler;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.IntStream;
 
 import static views.screen.home.HomeScreenHandler.LOGGER;
 
@@ -53,7 +44,7 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
             return this.index;
         }
         public String getBarcode(){
-            return String.valueOf(this.bike.getBikeId());
+            return this.bike.toHash();
         }
         public String getCategory(){
             return this.bike.getCategory().getCategoryName();
@@ -104,7 +95,7 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
         // Set image:
         super.setImage(true);
         // BackIcon:
-        super.setSingleImage(backIcon,Configs.IMAGE_PATH + "/" +"capstone_backarrow.jpg");
+        super.setSingleImage(backIcon,Configs.IMAGE_PATH + "/" +"backarrow.jpg");
         // Set title
         super.setScreenTitle("Dock Detail");
     }
@@ -112,11 +103,11 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
     public void initiate(){
         System.out.println((DockDetailScreenHandler) this.loader.getController());
 
-        DockController dockController = (DockController) getBController();
+        DockController dockController = new DockController();
         Dock dock = dockController.getDock(this.dockID);
         // Set title, image and label name:
         titleLabel.setText("Bãi xe " + dock.getDockName());
-        this.setSingleImage(dockImage,Configs.IMAGE_PATH + "/dock/" +dock.getImagePath());
+        this.setSingleFitImage(dockImage,Configs.IMAGE_PATH + "/dock/" +dock.getImagePath(), 400, 220);
 
         // Load data to table:
         List<Bike> bikes = dockController.getBikeByDockId(this.dockID);
@@ -175,6 +166,7 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
             LOGGER.info("User clicked to view a dock");
             bikeDetailScreen = new BikeDetailScreenHandler(this.stage, Configs.BIKE_DETAIL_SCREEN_PATH, bike);
             bikeDetailScreen.setHomeScreenHandler(this.homeScreenHandler);
+            bikeDetailScreen.setScreenTitle("Bike Detail Screen");
             bikeDetailScreen.setBController(new BikeController());
             bikeDetailScreen.setPreviousScreen(this);
             bikeDetailScreen.initiate();
@@ -189,10 +181,12 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
     void searchBike(ActionEvent event) {
         String info = searchBikeTextField.getText();
         int option = searchOption;
+        if (option == 0)
+            info = String.valueOf(this.inverseHash(info));
         if (option != -1 && option != 4){
             String opt = searchBikeBtn.getItems().get(option).getText();
             opt = opt.substring(0, 1).toLowerCase() + opt.substring(1);
-            DockController dockController = (DockController) getBController();
+            DockController dockController = new DockController();
             List<Bike> bikes = dockController.searchBike(opt, info, this.dockID);
             this.loadDataToBikeTable(bikes);
         }

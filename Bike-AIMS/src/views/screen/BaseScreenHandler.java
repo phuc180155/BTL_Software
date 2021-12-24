@@ -93,6 +93,8 @@ public class BaseScreenHandler {
 		
 		if (click){
 			logo.setOnMouseClicked(e -> {
+				this.homeScreenHandler.initialize();
+				this.homeScreenHandler.setScreenTitle("Home Screen");
 				this.homeScreenHandler.show();
 			});
 		}
@@ -110,6 +112,13 @@ public class BaseScreenHandler {
 		imgView.setBlendMode(BlendMode.MULTIPLY);
 	}
 
+	public void setSingleFitImage(ImageView imgView, String imgPath, int width, int height){
+		File f = new File(imgPath);
+		Image img = new Image(f.toURI().toString(), width, height, false, false);
+		imgView.setImage(img);
+		imgView.setBlendMode(BlendMode.MULTIPLY);
+	}
+
 	public String convertCurrencyFormat(float p){
 		String price = ""+ Math.round(p);
 		if (price.length() <= 3)
@@ -120,5 +129,14 @@ public class BaseScreenHandler {
 		for (int i = price.length()%3; i<price.length(); i+=3)
 			newFormat.append(new char[]{'.', price.charAt(i), price.charAt(i + 1), price.charAt(i + 2)});
 		return (newFormat.toString().charAt(0) == '.') ? newFormat.toString().substring(1) : newFormat.toString();
+	}
+
+	public int inverseHash(String inverse){
+		if (inverse.equals(""))
+			return -1;
+		StringBuilder s = new StringBuilder();
+		for (int i = 0; i < inverse.length(); i++)
+			s.append((inverse.charAt(i) == '0') ? '1' : '0');
+		return Integer.parseInt(s.toString(), 2);
 	}
 }
