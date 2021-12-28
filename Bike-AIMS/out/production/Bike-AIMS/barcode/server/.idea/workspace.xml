@@ -8,6 +8,7 @@
       <change afterPath="$PROJECT_DIR$/../../../assets/css/general.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../assets/css/homescreen.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../assets/css/splash.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../assets/db/bike_rental.sql" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../assets/images/backarrow.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../assets/images/capstone_background.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../assets/images/dock/dock_1.jpg" afterDir="false" />
@@ -93,6 +94,7 @@
       <change afterPath="$PROJECT_DIR$/../../accessor/DataAccessorInterface.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../accessor/DockAccessor.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../accessor/RentAccessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../accessor/TransactionHistoryAccessor.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../accessor/UserAccessor.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../accessor/connection/ConnectionFactory.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../accessor/connection/DBConnection.java" afterDir="false" />
@@ -130,7 +132,7 @@
       <change afterPath="$PROJECT_DIR$/../../entity/Category.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../entity/Dock.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../entity/Rent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../entity/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../entity/TransactionHistory.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../entity/User.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/fxml/BikeDetail.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/fxml/CreditCardForm.fxml" afterDir="false" />
@@ -190,7 +192,6 @@
       <change beforePath="$PROJECT_DIR$/../../../assets/images/dvd/dvd7.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../assets/images/dvd/dvd8.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../assets/images/dvd/dvd9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../assets/images/loading.gif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../assets/images/search.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../common/exception/AimsException.java" beforeDir="false" />
@@ -224,7 +225,7 @@
       <change beforePath="$PROJECT_DIR$/../../entity/media/Media.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../entity/order/Order.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../entity/order/OrderMedia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../entity/payment/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../entity/CreditCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../entity/payment/CreditCard.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../entity/payment/PaymentTransaction.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../entity/shipping/Shipment.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../entity/user/User.java" beforeDir="false" />

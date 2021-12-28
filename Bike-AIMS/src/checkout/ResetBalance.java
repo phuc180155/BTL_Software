@@ -13,9 +13,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class ResetBalance {
-    private static CreditCard card = new CreditCard("118131_group5_2020", "Group 5", "296", "1125");
+    private static CreditCard card = new CreditCard("kstn_group8_2021", "Group 8", "412", "1125");
 
     public static JSONObject resetRequest(CreditCard card) throws IOException, JSONException {
         JSONObject cardInfo = new JSONObject();
@@ -38,8 +39,10 @@ public class ResetBalance {
         return new JSONObject(EntityUtils.toString(httpEntity));
     }
 
-    public static void main (String[] args) throws IOException, JSONException {
-        JSONObject response = resetRequest(card);
-        System.out.println(response.get("balance"));
+    public static void main (String[] args) throws IOException, JSONException, ParseException {
+//        JSONObject response = resetRequest(card);
+//        System.out.println(response.get("balance"));
+        InterbankSubsystem interbank = new InterbankSubsystem();
+        PaymentTransaction ref = interbank.refund(card, 1000000000, "refund");
     }
 }

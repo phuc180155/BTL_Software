@@ -20,7 +20,7 @@
                </image>
             </ImageView>
             <AnchorPane layoutX="968.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="631.0" AnchorPane.leftAnchor="968.0" AnchorPane.rightAnchor="-18.0" AnchorPane.topAnchor="25.0" />
-            <Button fx:id="backBtn" blendMode="MULTIPLY" layoutX="1011.0" layoutY="26.0" mnemonicParsing="false" onAction="#goBackPreviousScreen" prefHeight="47.0" prefWidth="129.0" style="-fx-background-radius: 10;" textFill="#7e1f1f" AnchorPane.rightAnchor="9.400000000000006">
+            <Button fx:id="backBtn" blendMode="MULTIPLY" layoutX="1011.0" layoutY="26.0" mnemonicParsing="false" onAction="#goBackPreviousScreen" prefHeight="47.0" prefWidth="129.0" style="-fx-background-radius: 10; -fx-cursor: hand;" textFill="#7e1f1f" AnchorPane.rightAnchor="9.400000000000006">
                <font>
                   <Font size="21.0" />
                </font>

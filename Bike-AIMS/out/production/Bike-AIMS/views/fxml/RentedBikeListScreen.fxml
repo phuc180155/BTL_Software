@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.AmbientLight?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -77,13 +78,27 @@
       </AnchorPane>
       <AnchorPane layoutX="265.0" layoutY="199.0" prefHeight="585.0" prefWidth="1151.0" style="-fx-border-color: grey;" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="100.0">
          <children>
-            <ScrollPane layoutX="31.0" layoutY="64.0" prefHeight="518.0" prefWidth="741.0">
-               <content>
-                  <ListView fx:id="rentedBikeListView" onMouseClicked="#goReturnBikeScreen" prefHeight="522.0" prefWidth="742.0" />
-               </content>
-            </ScrollPane>
+            <SplitPane dividerPositions="0.8024" layoutX="71.0" layoutY="74.0" prefHeight="471.0" prefWidth="501.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="422.0">
+                     <children>
+                        <ListView fx:id="rentedBikeListView" onMouseClicked="#goReturnBikeScreen" prefHeight="472.0" prefWidth="406.0" AnchorPane.bottomAnchor="-2.3999999999999773" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane fx:id="paneTimer" minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="101.0">
+                     <children>
+                        <ListView fx:id="timerListView" prefHeight="474.0" prefWidth="139.0" AnchorPane.bottomAnchor="-2.3999999999999773" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <ImageView fx:id="rentedBikeListImage" blendMode="MULTIPLY" fitHeight="401.0" fitWidth="539.0" layoutX="662.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/images/rentedBikeListImage.jpg" />
+               </image>
+            </ImageView>
+            <AmbientLight color="CHARTREUSE" lightOn="true" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="1150.0" layoutY="172.0" prefHeight="585.0" prefWidth="0.0" style="-fx-background-image: url('file:/D:/TKXDPM/Bài%20tập%20tuần/ScreenBuilder/image/capstone_content_part1.jpg'); -fx-border-color: grey;" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="1150.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
    </children>
 </AnchorPane>

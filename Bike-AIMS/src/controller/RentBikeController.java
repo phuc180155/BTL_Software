@@ -12,6 +12,7 @@ import controller.calculator.SimpleCostCalculator;
 import accessor.*;
 import entity.Dock;
 import entity.Rent;
+import utils.Configs;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -22,9 +23,6 @@ import java.sql.Timestamp;
  * This class controls flow of system when user rents bike.
  */
 public class RentBikeController extends BaseController {
-
-    private final String SUCCESS_NOTIFICATION = "Your transaction is successful!";
-    private final String BIKE_IS_RENTED = "This bike is rented, please choose others!";
 
     private BarcodeProcessor barcodeProcessor;
     private BikeAccessor bikeAccessor;
@@ -60,8 +58,9 @@ public class RentBikeController extends BaseController {
      * @return notification string
      */
     public String requestRentBike(int userId, Bike bike, CreditCard creditCard) {
-        if (bike.isStatus())
-            return BIKE_IS_RENTED;
+        if (bike.isStatus()){
+            return Configs.BIKE_IS_RENTED;
+        }
         int cost = (int) this.costComputer.getDebit(bike);
         try {
             PaymentTransaction paymentTransaction = this.interbank.payRental(creditCard, cost, "rent bike" + bike.getBikeName());
@@ -80,7 +79,7 @@ public class RentBikeController extends BaseController {
             // Save rent:
             Rent rent = new Rent(-1, userId, bike, cost, startTime, null);
             this.rentAccessor.save(rent);
-            return SUCCESS_NOTIFICATION;
+            return Configs.SUCCESS_NOTIFICATION;
 
         } catch (PaymentException e) {
             return e.getMessage();

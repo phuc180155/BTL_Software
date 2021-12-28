@@ -91,6 +91,7 @@ public class ReturnBikeController extends BaseController{
             e.printStackTrace();
             return "Error while return bike!";
         } catch (PaymentException e) {
+            System.out.print(e.getMessage());
             return e.getMessage();
         }
         return SUCCESS_REFUND;

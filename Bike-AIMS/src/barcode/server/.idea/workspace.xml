@@ -19,8 +19,10 @@
       <change afterPath="$PROJECT_DIR$/../../../assets/images/foot3.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../assets/images/foot4.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../assets/images/foot_background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../assets/images/homeicon.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../assets/images/logo.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../assets/images/rentedBikeCart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../assets/images/rentedBikeListImage.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../lib/mysql-connector-java-5.1.49.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../lib/win/javafx-sdk-17.0.1/bin/api-ms-win-core-console-l1-1-0.dll" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../lib/win/javafx-sdk-17.0.1/bin/api-ms-win-core-console-l1-2-0.dll" afterDir="false" />
@@ -88,6 +90,7 @@
       <change afterPath="$PROJECT_DIR$/../../../lib/win/javafx-sdk-17.0.1/lib/javafx.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../lib/win/javafx-sdk-17.0.1/lib/javafx.swing.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../lib/win/javafx-sdk-17.0.1/lib/javafx.web.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Test.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../accessor/BikeAccessor.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../accessor/CategoryAccessor.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../accessor/DataAccessor.java" afterDir="false" />
@@ -138,13 +141,14 @@
       <change afterPath="$PROJECT_DIR$/../../views/fxml/CreditCardForm.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/fxml/DockDetail.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/fxml/HomeScreen.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../views/fxml/NotificationScreen.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/fxml/RentedBikeListScreen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../views/fxml/ResultScreen.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/fxml/SplashScreen.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/screen/BikeDetailScreenHandler.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/screen/DockDetailScreenHandler.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/screen/RentBikeScreenHandler.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/screen/RentedBikeListScreenHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../views/screen/ResultScreenHandler.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../views/screen/ReturnBikeScreenHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../assets/db/.fuse_hidden0000007d00000003" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../assets/db/.fuse_hidden0000007d00000006" beforeDir="false" />
@@ -192,7 +196,6 @@
       <change beforePath="$PROJECT_DIR$/../../../assets/images/dvd/dvd7.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../assets/images/dvd/dvd8.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../assets/images/dvd/dvd9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../assets/images/loading.gif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../assets/images/search.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../common/exception/AimsException.java" beforeDir="false" />

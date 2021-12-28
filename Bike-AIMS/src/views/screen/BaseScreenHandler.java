@@ -82,7 +82,7 @@ public class BaseScreenHandler {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
 
-	public void setImage(boolean click){
+	public void setImage(boolean homeClick){
 		// Config:
 		List<ImageView> imgViews = List.of(footImage11, footImage12, footImage13, footImage21, footImage22, logo);
 		Map<ImageView, String> map = new HashMap<ImageView, String>();
@@ -91,7 +91,7 @@ public class BaseScreenHandler {
 			map.put(imgViews.get(i), "foot"+i+".jpg");
 		map.put(imgViews.get(i), "logo.jpg");
 		
-		if (click){
+		if (homeClick){
 			logo.setOnMouseClicked(e -> {
 				this.homeScreenHandler.initialize();
 				this.homeScreenHandler.setScreenTitle("Home Screen");

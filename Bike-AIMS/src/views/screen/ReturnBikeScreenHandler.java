@@ -1,7 +1,6 @@
 package views.screen;
 
 import checkout.CreditCard;
-import controller.RentBikeController;
 import entity.Bike;
 import entity.Rent;
 import controller.ReturnBikeController;
@@ -28,7 +27,7 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler{
     private ImageView logo, backIcon;
 
     @FXML
-    private TextField cardHolderName, cardNumber, cvv, expirationDate;
+    private TextField owner, cardCode, cvvCode, dateExpired;
 
     @FXML
     private Button confirmBtn, validInformationBtn;
@@ -46,8 +45,8 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler{
     private Bike rentedBike;
 
     @FXML
-    void goBackPreviousScreen(ActionEvent event) {
-        RentedBikeListScreenHandler rentedBikeListScreenHandler = (RentedBikeListScreenHandler) this.getPreviousScreen();
+    void goBackPreviousScreen(ActionEvent event) throws IOException {
+        RentedBikeListScreenHandler rentedBikeListScreenHandler = new RentedBikeListScreenHandler(this.getPreviousScreen().stage, Configs.RENTED_BIKE_LIST_SCREEN_PATH, rent.getUserId());
         rentedBikeListScreenHandler.initiate();
         rentedBikeListScreenHandler.show();
 
@@ -108,10 +107,10 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler{
          * Handle event when user click on valid information button, fill in the default value of card
          */
         // Get the data from user(fix)
-        cardNumber.setText("kstn_group8_2021");
-        cardHolderName.setText("Group 8");
-        cvv.setText("412");
-        expirationDate.setText("1125");
+        cardCode.setText("kstn_group8_2021");
+        owner.setText("Group 8");
+        cvvCode.setText("412");
+        dateExpired.setText("1125");
     }
 
     @FXML
@@ -120,18 +119,24 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler{
          * Handle event when user click on return bike button, go to notification screen
          */
         // Get the data from user
-        CreditCard creditCard = new CreditCard(cardNumber.getText(), cardHolderName.getText(),
-                cvv.getText(), expirationDate.getText());
+        CreditCard creditCard = new CreditCard(cardCode.getText(), owner.getText(),
+                cvvCode.getText(), dateExpired.getText());
         Date date = new Date();
         java.sql.Timestamp end = new Timestamp(date.getTime());
 
         // Get result of rent bike from api and go to notification screen
         ReturnBikeController returnBikeController = new ReturnBikeController();
         String result = returnBikeController.requestReturnBike(this.rent.getUserId(), this.rent, creditCard, end);
-        if (result.contains("success")){
-            PopupScreen.success(result);
-            return;
+
+        ResultScreenHandler resultScreenHandler;
+        try {
+            resultScreenHandler = new ResultScreenHandler(this.stage, Configs.RESULT_SCREEN_PATH);
+            resultScreenHandler.setHomeScreenHandler(this.homeScreenHandler);
+            resultScreenHandler.setScreenTitle("Result Screen");
+            resultScreenHandler.initiate(result);
+            resultScreenHandler.show();
+        } catch (IOException e1){
+            e1.printStackTrace();
         }
-        PopupScreen.error(result);
     }
 }

@@ -40,6 +40,7 @@ public class BikeDetailScreenHandler extends BaseScreenHandler {
 
     @FXML
     void goBackPreviousScreen(ActionEvent event) {
+        this.setScreenTitle("Dock Detail Screen");
         this.getPreviousScreen().show();
     }
 
@@ -55,8 +56,7 @@ public class BikeDetailScreenHandler extends BaseScreenHandler {
         this.setImage(true);
         // BackIcon:
         this.setSingleImage(backIcon,Configs.IMAGE_PATH + "/" +"backarrow.jpg");
-        // Set title
-        this.setScreenTitle("Bike Detail");
+
         System.out.println((BikeDetailScreenHandler) this.loader.getController());
         // Set effect:
         String color = this.selectColor();

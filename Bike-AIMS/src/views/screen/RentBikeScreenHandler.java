@@ -24,7 +24,7 @@ public class RentBikeScreenHandler extends BaseScreenHandler{
     private ImageView logo, backIcon;
 
     @FXML
-    private TextField cardHolderName, cardNumber, cvv, expirationDate;
+    private TextField owner, cardCode, cvvCode, dateExpired;
 
     @FXML
     private Button confirmBtn, validInformationBtn;
@@ -91,10 +91,10 @@ public class RentBikeScreenHandler extends BaseScreenHandler{
          * Handle event when user click on valid information button, fill in the default value of card
          */
         // Get the data from user(fix)
-        cardNumber.setText("kstn_group8_2021");
-        cardHolderName.setText("Group 8");
-        cvv.setText("412");
-        expirationDate.setText("1125");
+        cardCode.setText("kstn_group8_2021");
+        owner.setText("Group 8");
+        cvvCode.setText("412");
+        dateExpired.setText("1125");
     }
 
     @FXML
@@ -103,16 +103,24 @@ public class RentBikeScreenHandler extends BaseScreenHandler{
          * Handle event when user click on confirm rent bike event, go to the notification screen
          */
         // Get the data from user
-        CreditCard creditCard = new CreditCard(cardNumber.getText(), cardHolderName.getText(),
-                cvv.getText(), expirationDate.getText());
+        CreditCard creditCard = new CreditCard(cardCode.getText(), owner.getText(),
+                cvvCode.getText(), dateExpired.getText());
 
         // Get result of rent bike from api and go to notification screen
         RentBikeController rentBikeController = new RentBikeController();
         String result = rentBikeController.requestRentBike(this.userId, this.bike, creditCard);
-        if (result.contains("success")){
-            PopupScreen.success(result);
+        if (result.equals(Configs.BIKE_IS_RENTED)){
+            PopupScreen.error(Configs.BIKE_IS_RENTED);
             return;
         }
-        PopupScreen.error(result);
+        try {
+            ResultScreenHandler resultScreenHandler = new ResultScreenHandler(this.stage, Configs.RESULT_SCREEN_PATH);
+            resultScreenHandler.setHomeScreenHandler(this.homeScreenHandler);
+            resultScreenHandler.setScreenTitle("Result Screen");
+            resultScreenHandler.initiate(result);
+            resultScreenHandler.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
