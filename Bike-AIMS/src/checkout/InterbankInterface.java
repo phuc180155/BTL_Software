@@ -9,7 +9,7 @@ import java.text.ParseException;
 
 public interface InterbankInterface {
     /**
-     * Pay order, and then return the payment transaction
+     * Payment for ren, and then return the payment transaction
      *
      * @param card     - the credit card used for payment
      * @param amount   - the amount to pay

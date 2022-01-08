@@ -1,6 +1,7 @@
 package controller;
 
 import barcode.BarcodeProcessor;
+import barcode.exception.BarcodeException;
 import checkout.CreditCard;
 import checkout.InterbankInterface;
 import checkout.InterbankSubsystem;
@@ -15,6 +16,7 @@ import entity.Rent;
 import utils.Configs;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.text.ParseException;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -41,17 +43,23 @@ public class RentBikeController extends BaseController {
     }
 
     /**
-     * get bike for user
-     * @param barcode barcode in the bike
+     * request barcode server to get bike's id from a barcode
+     * @param barcode barcode of the bike
      * @return bike matched with barcode
      */
     public Bike requestBike(String barcode) {
-        int bikeId = this.barcodeProcessor.processBarcode(barcode);
-        return bikeAccessor.get(bikeId);
+        try {
+            int bikeId = this.barcodeProcessor.processBarcode(barcode);
+            return bikeAccessor.get(bikeId);
+        } catch(BarcodeException | MalformedURLException e){
+            System.out.print(e.getMessage());
+            return null;
+        }
+
     }
 
     /**
-     * Request rent bike for user
+     * Request interbank to deposit a bike
      * @param userId id of user
      * @param bike the bike wanted to rent by user
      * @param creditCard credit card of user

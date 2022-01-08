@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.List;
-
 public class User {
 
     private int userId;
@@ -9,10 +7,6 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public int getUserId() {
@@ -27,11 +21,4 @@ public class User {
         this.userId = userId;
         this.userName = userName;
     }
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "userId=" + this.userId +
-//                ", name='" + this.name + '\'' +
-//                '}';
-//    }
 }

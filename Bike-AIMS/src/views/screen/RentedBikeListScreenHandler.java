@@ -35,9 +35,6 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
     private ImageView logo, backIcon;
 
     @FXML
-    private ImageView footImage11, footImage12, footImage13, footImage21, footImage22;
-
-    @FXML
     private Label titleLabel;
 
     @FXML
@@ -55,7 +52,10 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
 
     @FXML
     void goBackPreviousScreen(ActionEvent event) {
-        HomeScreenHandler homeScreenHandler = (HomeScreenHandler) this.getPreviousScreen();
+        /**
+         * Handle event when user click back button, go back to home screen
+         */
+        HomeScreenHandler homeScreenHandler = (HomeScreenHandler) this.homeScreenHandler;
         homeScreenHandler.initialize();
         homeScreenHandler.show();
     }
@@ -65,6 +65,9 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
         this.userId = userId;
     }
 
+    /**
+     * Set up something in GUI such as images, effect, label...
+     */
     public void initiate(){
         // Set image:
         this.setImage(true);
@@ -79,8 +82,11 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
         this.loadData();
     }
 
+    /**
+     * Load rent's data to list view
+     */
     public void loadData(){
-        //Rent Listbikerented took from user
+        //Rented bike list took from user
         UserController userController = new UserController();
         List<Rent> rentLst = userController.getRentByUserId(this.userId);
         this.numberItems = rentLst.size();
@@ -90,10 +96,14 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
         rentedBikeListView.setItems(items);
         ObservableList<String> timer = FXCollections.observableArrayList(Collections.nCopies(numberItems, "00:00:00"));
         timerListView.setItems(timer);
-        setTimer(rentLst);
+        setStopWatch(rentLst);
 
     }
 
+    /**
+     * Handle event when people click a rent in list view to go return bike screen
+     * @param event
+     */
     @FXML
     void goReturnBikeScreen(MouseEvent event) {
         Rent rent = rentedBikeListView.getSelectionModel().getSelectedItem();
@@ -115,12 +125,6 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
         }
     }
 
-
-    /**
-     * Support for display timer
-     * @param value
-     * @return
-     */
     private static String format(long value){
         if (value < 10){
             return 0 + "" + value;
@@ -128,6 +132,11 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
         return String.valueOf(value);
     }
 
+    /**
+     * Convert from a duration of seconds to format h:m:s
+     * @param index index of a list of time of rent
+     * @return formatted String
+     */
     private String convertTime(int index){
         long totalSec = totalSecond.get(index);
         long min = TimeUnit.SECONDS.toMinutes(totalSec);
@@ -138,7 +147,11 @@ public class RentedBikeListScreenHandler extends BaseScreenHandler {
         return "" + format(hr) + ":" + format(min) + ":" + format(sec);
     }
 
-    public void setTimer(List<Rent> rentLst){
+    /**
+     * Display stop watch in GUI
+     * @param rentLst
+     */
+    public void setStopWatch(List<Rent> rentLst){
         if (rentLst.isEmpty())
             return;
         Timestamp now = new Timestamp(new Date().getTime());

@@ -82,6 +82,11 @@ public class BaseScreenHandler {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
 
+	/**
+	 * Set image in the foot part and set logo icon to GUI
+	 * the logo can be clicked for redirecting to homescreen if param homeClick is set true
+	 * @param homeClick
+	 */
 	public void setImage(boolean homeClick){
 		// Config:
 		List<ImageView> imgViews = List.of(footImage11, footImage12, footImage13, footImage21, footImage22, logo);
@@ -105,6 +110,11 @@ public class BaseScreenHandler {
 		}
 	}
 
+	/**
+	 * Set one image to GUI
+	 * @param imgView an object in FXML
+	 * @param imgPath the path to image
+	 */
 	public void setSingleImage(ImageView imgView, String imgPath){
 		File f = new File(imgPath);
 		Image img = new Image(f.toURI().toString());
@@ -112,6 +122,13 @@ public class BaseScreenHandler {
 		imgView.setBlendMode(BlendMode.MULTIPLY);
 	}
 
+	/**
+	 * Set one image to GUI with certain with and height
+	 * @param imgView an object in FXML
+	 * @param imgPath the path to image
+	 * @param width the width of image user wants to display
+	 * @param height the height of image user wants to display
+	 */
 	public void setSingleFitImage(ImageView imgView, String imgPath, int width, int height){
 		File f = new File(imgPath);
 		Image img = new Image(f.toURI().toString(), width, height, false, false);
@@ -119,6 +136,11 @@ public class BaseScreenHandler {
 		imgView.setBlendMode(BlendMode.MULTIPLY);
 	}
 
+	/**
+	 * Convert format of price from float to String
+	 * @param p price in float format
+	 * @return price in String format
+	 */
 	public String convertCurrencyFormat(float p){
 		String price = ""+ Math.round(p);
 		if (price.length() <= 3)
@@ -131,6 +153,11 @@ public class BaseScreenHandler {
 		return (newFormat.toString().charAt(0) == '.') ? newFormat.toString().substring(1) : newFormat.toString();
 	}
 
+	/**
+	 * inverse barcode to bike's id, it only uses for purpose displaying in GUI
+	 * @param inverse: barcode String
+	 * @return bike id
+	 */
 	public int inverseHash(String inverse){
 		if (inverse.equals(""))
 			return -1;

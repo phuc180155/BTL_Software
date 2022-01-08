@@ -70,28 +70,8 @@ public class Bike {
         this.bikeId = bikeId;
     }
 
-    public void setBikeName(String bikeName) {
-        this.bikeName = bikeName;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
-    public void setPin(float pin) {
-        this.pin = pin;
-    }
-
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public void setInitCost(float initCost) {
-        this.initCost = initCost;
-    }
-
-    public void setCostPerQuarterHour(float costPerQuarterHour) {
-        this.costPerQuarterHour = costPerQuarterHour;
     }
 
     public void setDockId(int dockId) {
@@ -102,19 +82,14 @@ public class Bike {
         this.category = category;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
     public String getImagePath() {
         return imagePath;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Xe đạp số " + this.bikeId + ".Tên xe: " +  this.bikeName + ". Barcode: " + this.bikeId;
-//    }
-
+    /**
+     * mapping bike'id to barcode for only purpose that is to display in bikes' table
+     * @return barcode String
+     */
     public String toHash(){
         StringBuilder binaryString = new StringBuilder(Integer.toBinaryString(this.bikeId));
         int length = binaryString.toString().length();

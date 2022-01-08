@@ -15,11 +15,9 @@ public abstract class DataAccessor<T> implements DataAccessorInterface<T> {
 
     public void execute(String q){
         dbConnection.execute(q);
-        return;
     }
 
     public void executeUpdate(String q){
         dbConnection.executeUpdate(q);
-        return;
     }
 }

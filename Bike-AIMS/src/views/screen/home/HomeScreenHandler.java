@@ -63,25 +63,12 @@ public class HomeScreenHandler extends BaseScreenHandler{
     @FXML
     private TextField searchDockTextField;
 
-//    @FXML
-//    private ImageView footImage11, footImage12, footImage13, footImage21, footImage22;
-
-
-    private static final int rowsPerPage = 10;
-
     private static int searchOption = -1;
-
 
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException{
         super(stage, screenPath);
         setBController(new HomeController());
         setHomeScreenHandler(this);
-    }
-
-    @Override
-    public void show(){
-//        numMediaInCart.setText(String.valueOf(Cart.getCart().getListMedia().size()) + " media");
-        super.show();
     }
 
     public void initialize() {
@@ -111,7 +98,6 @@ public class HomeScreenHandler extends BaseScreenHandler{
                         this.loadDataToDockTable(docks);
                     });
                 } else {
-                    int finalI1 = i;
                     menuItem.setOnAction((e) -> {
                         searchOption = finalI;
                     });
@@ -139,7 +125,7 @@ public class HomeScreenHandler extends BaseScreenHandler{
 
     public void goDockDetailScreen(MouseEvent e) throws IOException {
         /**
-         * Handle event when user click on dock, go to the dock detail screen of choosen dock
+         * Handle event when user click on dock, go to the dock detail screen of chosen dock
          */
         Dock dock = dockInfoTable.getSelectionModel().getSelectedItem();
         int id = dock.getDockId();
@@ -159,10 +145,13 @@ public class HomeScreenHandler extends BaseScreenHandler{
         }
     }
 
+    /**
+     * Load docks' data to table
+     * @param docks
+     */
     public void loadDataToDockTable(List<Dock> docks) {
         ObservableList<Dock> dockList = FXCollections.observableArrayList();
         dockList.addAll(docks);
-        // Thêm thông tin dock vào bảng:
         dockId.setCellValueFactory(new PropertyValueFactory<Dock, Integer>("dockId"));
         dockName.setCellValueFactory(new PropertyValueFactory<Dock, String>("dockName"));
         address.setCellValueFactory(new PropertyValueFactory<Dock, String>("address"));
@@ -174,6 +163,10 @@ public class HomeScreenHandler extends BaseScreenHandler{
         dockInfoTable.setItems(dockList);
     }
 
+    /**
+     * Handle event when user click to view rented bike list screen
+     * @param event
+     */
     @FXML
     void goRentedBikeListScreen(ActionEvent event) {
         RentedBikeListScreenHandler rentedBikeListScreenHandler;
@@ -191,7 +184,11 @@ public class HomeScreenHandler extends BaseScreenHandler{
         }
     }
 
-
+    /**
+     * Handle event when user click to rent bike, system will process received barcode and
+     * show a pop-up if barcode processing fails or redirect to rent bike screen if successes
+     * @param event
+     */
     @FXML
     void goRentBikeScreenHandler(ActionEvent event) throws IOException {
         // Get and barcode:
@@ -205,7 +202,10 @@ public class HomeScreenHandler extends BaseScreenHandler{
         RentBikeScreenHandler rentBikeScreenHandler;
         RentBikeController rentBikeController = new RentBikeController();
         Bike bike = rentBikeController.requestBike(barcode);
-
+        if (bike == null){
+            PopupScreen.error("Invalid Barcode!");
+            return;
+        }
         try {
             LOGGER.info("User clicked barcode");
             rentBikeScreenHandler = new RentBikeScreenHandler(this.stage, Configs.CREDIT_CARD_FORM_PATH, userId, bike);
@@ -219,6 +219,5 @@ public class HomeScreenHandler extends BaseScreenHandler{
             LOGGER.info("Errors occured: " + e1.getMessage());
             e1.printStackTrace();
         }
-
     }
 }

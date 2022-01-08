@@ -24,6 +24,12 @@ public class SimpleCostCalculator implements CostComputer {
         return cost;
     }
 
+    /**
+     * Get the duration of rent
+     * @param start: the start time of renting
+     * @param end: the end time of renting (returning time)
+     * @return minutes
+     */
     protected long getMinutes(Timestamp start, Timestamp end) {
         long duration = (end.getTime() - start.getTime());
         return TimeUnit.MILLISECONDS.toMinutes(duration);

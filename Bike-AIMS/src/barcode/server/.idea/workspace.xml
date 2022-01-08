@@ -151,6 +151,8 @@
       <change afterPath="$PROJECT_DIR$/../../accessor/connection/MySQLConnection.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../BarcodeInterface.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../BarcodeProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/BarcodeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception/InvalidBarcodeException.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../subsystem/BarcodeBoundary.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../subsystem/BarcodeSubsystemController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../checkout/CreditCard.java" afterDir="false" />
@@ -310,6 +312,7 @@
       <change beforePath="$PROJECT_DIR$/../../views/screen/payment/ResultScreenHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../views/screen/popup/PopupScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../views/screen/PopupScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../views/screen/shipping/ShippingScreenHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../test/ValidatePhoneNumberTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

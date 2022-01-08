@@ -23,8 +23,12 @@ public class ResultScreenHandler extends BaseScreenHandler{
     @FXML
     private ImageView homeIcon;
 
+
     @FXML
     void goHomeScreen(ActionEvent event) throws IOException {
+        /**
+         * Handle event when user click home icon, go to home screen
+         */
         HomeScreenHandler homeHandler = new HomeScreenHandler(this.stage, Configs.HOME_PATH);
         homeHandler.setScreenTitle("Home screen");
         homeHandler.initialize();

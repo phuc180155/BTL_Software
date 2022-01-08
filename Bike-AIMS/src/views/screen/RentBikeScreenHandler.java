@@ -43,6 +43,9 @@ public class RentBikeScreenHandler extends BaseScreenHandler{
 
     @FXML
     void goBackPreviousScreen(ActionEvent event) {
+        /**
+         * Handle event when user click back button, go back to home screen
+         */
         HomeScreenHandler homeScreenHandler = (HomeScreenHandler) this.getPreviousScreen();
         homeScreenHandler.initialize();
         homeScreenHandler.setScreenTitle("Home Screen");
@@ -55,6 +58,9 @@ public class RentBikeScreenHandler extends BaseScreenHandler{
         this.bike = bike;
     }
 
+    /**
+     * Set up something in GUI such as image, button...
+     */
     public void initiate() {
         // Set image and title
         this.setImage(true);
@@ -66,6 +72,9 @@ public class RentBikeScreenHandler extends BaseScreenHandler{
         this.loadData();
     }
 
+    /**
+     * Load rented bikes' data to list view
+     */
     public void loadData() {
         String bikeId = "Bike id: " + bike.getBikeId();
         String bikeName = "Bike name:  " + bike.getBikeName();
@@ -100,7 +109,7 @@ public class RentBikeScreenHandler extends BaseScreenHandler{
     @FXML
     void confirm(ActionEvent event) throws IOException {
         /**
-         * Handle event when user click on confirm rent bike event, go to the notification screen
+         * Handle event when user click on confirm rent bike event, go to the result screen
          */
         // Get the data from user
         CreditCard creditCard = new CreditCard(cardCode.getText(), owner.getText(),

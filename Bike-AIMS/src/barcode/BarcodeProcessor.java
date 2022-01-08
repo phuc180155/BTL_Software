@@ -1,6 +1,10 @@
 package barcode;
 
+import barcode.exception.BarcodeException;
+import barcode.exception.InvalidBarcodeException;
 import barcode.subsystem.BarcodeSubsystemController;
+
+import java.net.MalformedURLException;
 
 public class BarcodeProcessor implements BarcodeInterface {
 
@@ -10,7 +14,7 @@ public class BarcodeProcessor implements BarcodeInterface {
     }
 
     @Override
-    public int processBarcode(String barcode) {
-        return this.ctrl.convertBikeID(barcode);
+    public int processBarcode(String barcode) throws MalformedURLException, BarcodeException {
+        return this.ctrl.processBarcode(barcode);
     }
 }

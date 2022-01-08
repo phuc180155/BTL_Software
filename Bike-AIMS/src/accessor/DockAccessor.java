@@ -7,7 +7,12 @@ import entity.Dock;
 
 public class DockAccessor extends DataAccessor<Dock>{
 
-    public List<Dock> get(String q) {
+    /**
+     * Query a list of docks in the database with parameter which is a query statement
+     * @param q: query statement
+     * @return List<Dock>
+     */
+    public List<Dock> getByQuery(String q) {
         List<Dock> docks = new ArrayList<Dock>();
         try{
             ResultSet rs = query(q);
@@ -30,7 +35,7 @@ public class DockAccessor extends DataAccessor<Dock>{
     @Override
     public Dock get(int id) {
         String q = "SELECT * FROM dock WHERE dockId = " + id;
-        List<Dock> docks = get(q);
+        List<Dock> docks = getByQuery(q);
         if (docks.size() != 1)
             return null;
         return docks.get(0);
@@ -40,9 +45,15 @@ public class DockAccessor extends DataAccessor<Dock>{
     @Override
     public List<Dock> getAll() {
         String q = "SELECT * FROM dock" ;
-        return this.get(q);
+        return this.getByQuery(q);
     }
 
+    /**
+     * Search a list of docks in the database by searched option and searched information
+     * @param searchOption: select from 2 options {0, 1}, 0 is option "dockName" and 1 is option "address"
+     * @param info: the information needs to search
+     * @return List<Dock>
+     */
     public List<Dock> searchDock(int searchOption, String info){
         String type;
         if (searchOption == 0) {
@@ -53,7 +64,7 @@ public class DockAccessor extends DataAccessor<Dock>{
         if (info.equals(""))
             return new ArrayList<Dock>();
         String q = String.format("SELECT * FROM dock WHERE %s LIKE \"%s%s%s\"", type, "%", info, "%");
-        return this.get(q);
+        return this.getByQuery(q);
     }
 
     @Override

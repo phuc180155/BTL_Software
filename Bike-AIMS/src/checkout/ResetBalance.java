@@ -18,6 +18,13 @@ import java.text.ParseException;
 public class ResetBalance {
     private static CreditCard card = new CreditCard("kstn_group8_2021", "Group 8", "412", "1125");
 
+    /**
+     * Send request to server for reseting balance
+     * @param card: card information
+     * @return json of response
+     * @throws IOException
+     * @throws JSONException
+     */
     public static JSONObject resetRequest(CreditCard card) throws IOException, JSONException {
         JSONObject cardInfo = new JSONObject();
         cardInfo.put("cardCode", card.getCardCode());
@@ -35,13 +42,10 @@ public class ResetBalance {
             throw new RuntimeException("Failed with HTTP error code : " + statusCode);
         }
         HttpEntity httpEntity = httpResponse.getEntity();
-
         return new JSONObject(EntityUtils.toString(httpEntity));
     }
 
     public static void main (String[] args) throws IOException, JSONException, ParseException {
-//        JSONObject response = resetRequest(card);
-//        System.out.println(response.get("balance"));
         InterbankSubsystem interbank = new InterbankSubsystem();
         PaymentTransaction ref = interbank.refund(card, 1000000000, "refund");
     }

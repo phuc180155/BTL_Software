@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 public interface CostComputer {
 
     /**
-     *
+     * calculate the total money for renting
      * @param rent bike that was rented by user
      * @param endTime the time user checking out
      * @return amount of money
@@ -19,9 +19,9 @@ public interface CostComputer {
     float checkout(Rent rent, Timestamp endTime);
 
     /**
-     *
+     * Get the debit of bike
      * @param bike
-     * @return
+     * @return debit:
      */
     float getDebit(Bike bike);
 

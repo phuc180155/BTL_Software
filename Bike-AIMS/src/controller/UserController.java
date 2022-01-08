@@ -5,10 +5,6 @@ import entity.Rent;
 
 import java.util.List;
 
-/**
- * This class is the base controller for our AIMS project
- * @author nguyenlm
- */
 public class UserController {
     private RentAccessor rentAccessor;
 

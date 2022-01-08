@@ -33,6 +33,11 @@ public class BikeAccessor extends DataAccessor<Bike>{
         return bike;
     }
 
+    /**
+     * Query a list of bikes in the database with parameter which is a query statement
+     * @param q: query statement
+     * @return List<Bike>
+     */
     public List<Bike> getByQuery(String q){
         List<Bike> bikes = new ArrayList<Bike>();
         try{
@@ -60,11 +65,23 @@ public class BikeAccessor extends DataAccessor<Bike>{
         return this.getByQuery(q);
     }
 
+    /**
+     * Query list of bike that belongs to a dock
+     * @param dockId: id of the dock
+     * @return List<Bike>
+     */
     public List<Bike> getBikeByDockId(int dockId) {
         String q = "SELECT * FROM bike where dockId = " + dockId;
         return this.getByQuery(q);
     }
 
+    /**
+     * Search a list of bikes in a dock by searched option and searched information
+     * @param option: select from 4 options {Barcode, BikeName, Status, Category}
+     * @param info: the information needs to search
+     * @param dockId: the dock's id
+     * @return List<Bike>
+     */
     public List<Bike> searchBike(String option, String info, int dockId){
         String q;
         if (option.equals("status")) {
@@ -116,6 +133,12 @@ public class BikeAccessor extends DataAccessor<Bike>{
         }
     }
 
+    /**
+     * Changing status of a bike, from available to renting and vice versa
+     * @param bikeId: the bike's id
+     * @param status: status need to be changed
+     * @return
+     */
     public void updateStatus(int bikeId, int status){
         String q = "UPDATE bike SET " +
                 " status = " + status +

@@ -35,24 +35,8 @@ public class Rent {
         return debit;
     }
 
-    public void setRentId(int rentId) {
-        this.rentId = rentId;
-    }
-
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public void setRentedBike(Bike rentedBike) {
-        this.rentedBike = rentedBike;
-    }
-
-    public void setDebit(int debit) {
-        this.debit = debit;
-    }
-
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
     }
 
     public void setEndTime(Timestamp endTime) {

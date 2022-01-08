@@ -8,8 +8,13 @@ import java.net.URL;
 import org.json.*;
 
 public class BarcodeBoundary {
-	public static String query(URL url) {
-		String output = null;
+	/**
+	 * Send request to server barcode
+	 * @param url: the api's url
+	 * @return response
+	 */
+	public static String request(URL url) {
+		String response = null;
 		try {
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setDoOutput(true);
@@ -26,18 +31,18 @@ public class BarcodeBoundary {
 					(conn.getInputStream())));
 
 
-			StringBuilder response = new StringBuilder();
+			StringBuilder output = new StringBuilder();
 			while ((inputLine = br.readLine()) != null)
-				response.append(inputLine);
+				output.append(inputLine);
 			br.close();
 			// Read json response:
-			output = response.toString();
-			System.out.println("Output from Server .... " + output);
+			response = output.toString();
+			System.out.println("Output from Server .... " + response);
 			conn.disconnect();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return output;
+		return response;
 	}
 }
 

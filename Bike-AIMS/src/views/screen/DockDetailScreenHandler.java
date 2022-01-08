@@ -25,6 +25,9 @@ import static views.screen.home.HomeScreenHandler.LOGGER;
 
 public class DockDetailScreenHandler extends BaseScreenHandler{
 
+    /**
+     * Class uses for wrapping information together in purpose displaying information in bikes' GUI table
+     */
     public class Wrapper{
         private Bike bike;
         private int index;
@@ -59,6 +62,7 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
             return this.bike;
         }
     }
+
     @FXML
     private Button backBtn;
     @FXML
@@ -76,17 +80,8 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
     @FXML
     private Label titleLabel;
 
-
     private int dockID;
     private static int searchOption=-1;
-
-    public int getDockID() {
-        return dockID;
-    }
-
-    public void setDockID(int dockID) {
-        this.dockID = dockID;
-    }
 
     public DockDetailScreenHandler(Stage stage, String screenPath, int dockID) throws IOException {
         super(stage, screenPath);
@@ -100,9 +95,11 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
         super.setScreenTitle("Dock Detail");
     }
 
+    /**
+     * Set up something in GUI
+     */
     public void initiate(){
         System.out.println((DockDetailScreenHandler) this.loader.getController());
-
         DockController dockController = new DockController();
         Dock dock = dockController.getDock(this.dockID);
         // Set title, image and label name:
@@ -130,6 +127,10 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
         }
     }
 
+    /**
+     * Load bikes' data to table
+     * @param bikes
+     */
     public void loadDataToBikeTable(List<Bike> bikes){
         ObservableList<Wrapper> wrapper = FXCollections.observableArrayList();
         for (int i = 0; i < bikes.size(); i++){
@@ -177,6 +178,10 @@ public class DockDetailScreenHandler extends BaseScreenHandler{
         }
     }
 
+    /**
+     * Handle event when user click search button to search for a bike or list of bikes with provided information
+     * @param event
+     */
     @FXML
     void searchBike(ActionEvent event) {
         String info = searchBikeTextField.getText();

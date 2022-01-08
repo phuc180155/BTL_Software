@@ -30,6 +30,11 @@ public class RentAccessor extends DataAccessor<Rent>{
         return rent;
     }
 
+    /**
+     * Query a list of rents in the database with parameter which is a query statement
+     * @param q: query statement
+     * @return List<Rent>
+     */
     public List<Rent> getByQuery(String q){
         List<Rent> rentLst = new ArrayList<Rent>();
         try{
@@ -56,8 +61,13 @@ public class RentAccessor extends DataAccessor<Rent>{
         return this.getByQuery(q);
     }
 
+    /**
+     * Query a list of rents of a user satisfy that the rent's bike is not returned
+     * @param userId: the user's id
+     * @return List<Rent>
+     */
     public List<Rent> getRentByUserId(int userId) {
-        String q = "SELECT rent.* FROM rent, bike WHERE rent.bikeId = bike.bikeId and bike.status = 1 and rent.userId = " + userId;
+        String q = "SELECT rent.* FROM rent, bike WHERE rent.bikeId = bike.bikeId and rent.endTime is null and bike.status = 1 and rent.userId = " + userId;
         return this.getByQuery(q);
     }
 

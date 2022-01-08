@@ -28,20 +28,4 @@ public class CreditCard {
     public String getDateExpired() {
         return dateExpired;
     }
-
-    public void setCardCode(String cardCode) {
-        this.cardCode = cardCode;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public void setCvvCode(String cvvCode) {
-        this.cvvCode = cvvCode;
-    }
-
-    public void setDateExpired(String dateExpired) {
-        this.dateExpired = dateExpired;
-    }
 }

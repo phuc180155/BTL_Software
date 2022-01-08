@@ -1,5 +1,7 @@
 package barcode.subsystem;
 
+import barcode.exception.BarcodeException;
+import barcode.exception.InvalidBarcodeException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -13,15 +15,23 @@ public class BarcodeSubsystemController {
 	private static final String BARCODE_SERVER = "http://localhost:5000";
 	private static final String BARCODE_URI = "/request_bike_id";
 
-	public int convertBikeID(String barcode) {
-		try {
-			URL url = new URL(BARCODE_SERVER + BARCODE_URI + "?code=" + barcode + "");
-			String response = BarcodeBoundary.query(url);
-			JSONObject obj = new JSONObject (response.toString());
-			return obj.getInt("bikeId");
-		} catch (MalformedURLException e){
-			System.out.print("URL exception");
-			return -1;
+	/**
+	 * Get the bike's id in the response of server
+	 * @param barcode: the barcode needs to process
+	 * @return bike's id
+	 * @throws BarcodeException if have errorCode response from server
+	 * @throws MalformedURLException if can't recognize url
+	 */
+	public int processBarcode(String barcode) throws BarcodeException, MalformedURLException {
+		URL url = new URL(BARCODE_SERVER + BARCODE_URI + "?code=" + barcode + "");
+		String response = BarcodeBoundary.request(url);
+		JSONObject obj = new JSONObject(response.toString());
+		switch ((String) obj.getString("errorCode")) {
+			case "00":
+				break;
+			case "01":
+				throw new InvalidBarcodeException();
 		}
+		return obj.getInt("bikeId");
 	}
 }

@@ -22,14 +22,6 @@ public class TransactionHistory {
         this.createAt = createAt;
     }
 
-    public TransactionHistory(String errorCode){
-        this.errorCode = errorCode;
-    }
-
-    public void setTransactionId(int transactionId) {
-        this.transactionId = transactionId;
-    }
-
     public void setUserId(int userId) {
         this.userId = userId;
     }
@@ -38,20 +30,8 @@ public class TransactionHistory {
         this.bikeId = bikeId;
     }
 
-    public void setTotalCost(float totalCost) {
-        this.totalCost = totalCost;
-    }
-
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public void setRentedDuration(float rentedDuration) {
-        this.rentedDuration = rentedDuration;
-    }
-
-    public void setModifyAt(Timestamp createAt) {
-        this.createAt = createAt;
     }
 
     public int getTransactionId() {
@@ -78,24 +58,8 @@ public class TransactionHistory {
         return rentedDuration;
     }
 
-    public String getErrorCode() {
-        return errorCode;
-    }
-
     public Timestamp getCreateAt() {
         return createAt;
     }
 
-
-    //    @Override
-//    public String toString() {
-//        return "TransactionHistory{" +
-//                "transactionId=" + this.transactionId +
-//                ", userId=" + this.userId +
-//                ", total_payment=" + this.total_payment +
-//                ", time=" + this.time +
-//                ", bike_name='" + this.bike_name + '\'' +
-//                ", rented_duration=" + this.rented_duration +
-//                '}';
-//    }
 }

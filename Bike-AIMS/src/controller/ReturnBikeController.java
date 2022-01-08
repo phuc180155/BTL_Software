@@ -49,19 +49,19 @@ public class ReturnBikeController extends BaseController{
      * calculate cost of bike rented to specific time
      * @param rent bike rented by user
      * @param endTime the time that user rent bike to
-     * @return
+     * @return total cost
      */
     public float calculateCost(Rent rent, Timestamp endTime) {
         return this.calculator.checkout(rent, endTime);
     }
 
     /**
-     * return return bike rented by user
+     * request interbank to pay a renting cost for returning bike
      * @param userId id of user
      * @param rent user's rented bike
      * @param creditCard credit card info
      * @param endTime time that user returns bike
-     * @return
+     * @return notification string
      */
     public String requestReturnBike(int userId, Rent rent, CreditCard creditCard, Timestamp endTime) {
         if (endTime == null) {
@@ -97,6 +97,13 @@ public class ReturnBikeController extends BaseController{
         return SUCCESS_REFUND;
     }
 
+    /**
+     * Make transaction history after payment transaction of returning bike
+     * @param userId id of user
+     * @param rent
+     * @param paymentTransaction
+     * @return TransactionHistory
+     */
     private TransactionHistory makeTransactionHistory(int userId, Rent rent, PaymentTransaction paymentTransaction) {
         int transactionId = -1;
         int bikeId = rent.getRentedBike().getBikeId();

@@ -19,7 +19,6 @@ import views.screen.home.*;
 
 import static java.lang.Math.random;
 
-
 public class App extends Application {
 
 	@FXML
@@ -28,11 +27,7 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-
-			// initialize the scene
-			// Khi dùng FXML load file XXX.fxml, XXXController tự động gọi
 			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource(Configs.SPLASH_SCREEN_PATH));
-
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 
@@ -57,26 +52,26 @@ public class App extends Application {
 								new KeyValue(circle.translateXProperty(), random() * 800),
 								new KeyValue(circle.translateYProperty(), random() * 600)
 						),
-						new KeyFrame(new Duration(2), // set end position at 40s
+						new KeyFrame(new Duration(5), // set end position at 5s
 								new KeyValue(circle.translateXProperty(), random() * 800),
 								new KeyValue(circle.translateYProperty(), random() * 600)
 						)
 				);
 			}
-			// play 40s of animation
+			// play 5s of animation
 			timeline.play();
 
 			primaryStage.show();
 
 			// Load splash screen with fade in effect
-			FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), root);
+			FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), root);
 			fadeIn.setFromValue(0);
-			fadeIn.setToValue(1);
+			fadeIn.setToValue(3);
 			fadeIn.setCycleCount(1);
 
 			// Finish splash with fade out effect
-			FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), root);
-			fadeOut.setFromValue(1);
+			FadeTransition fadeOut = new FadeTransition(Duration.seconds(2), root);
+			fadeOut.setFromValue(2);
 			fadeOut.setToValue(0);
 			fadeOut.setCycleCount(1);
 

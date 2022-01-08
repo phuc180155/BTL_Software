@@ -18,37 +18,14 @@ public class Dock {
         this.dockId = dockId;
     }
 
-    public void setDockName(String dockName) {
-        this.dockName = dockName;
-    }
-
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public void setDockArea(float dockArea) {
-        this.dockArea = dockArea;
     }
 
     public void setAvailableBikes(int availableBikes) {
         this.availableBikes = availableBikes;
     }
 
-    public void setEmptyDockingPoints(int emptyDockingPoints) {
-        this.emptyDockingPoints = emptyDockingPoints;
-    }
-
-    public void setDistance(float distance) {
-        this.distance = distance;
-    }
-
-    public void setWalkingTime(float walkingTime) {
-        this.walkingTime = walkingTime;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
 
     public Dock(int dockId, String dockName, String address, float dockArea, int availableBikes, int emptyDockingPoints, float distance, float walkingTime, String imagePath) {
         this.dockId = dockId;
@@ -97,13 +74,5 @@ public class Dock {
     public String getImagePath() {
         return imagePath;
     }
-//    @Override
-//    public String toString() {
-//        return "Dock{" +
-//                "dockId=" + this.dockId +
-//                ", dockName='" + this.dockName + '\'' +
-//                ", address='" + this.address + '\'' +
-//                ", imagePath='" + this.imagePath + '\'' +
-//                '}';
-//    }
+
 }
